@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+.scrollbar-for-home .ng-scrollbar-thumb {
+    background-color: transparent;
+  }
+  .scrollbar-for-home .ng-scrollbar-thumb:hover, .scrollbar-for-home .ng-scrollbar-thumb:active {
+    background-color: transparent;
+  }
+  .input-field input:focus, .input-field input[type=text]:valid, .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, .input-field input[type=url]:valid,  .input-field input[type=date]:valid {
+    border: 1px solid rgba(0,0,0,.3);
+    padding: 0px 10px;
+}
+
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]){
+    border-bottom-color:  purple;
+    box-shadow: 0 1px 0 0 purple;
+}
+#voice-input {
+    position:  absolute;
+    right: 30px;
+    top: 30px;
+    padding:  0px;
+}
+
+#message-writer-input-wrapper input {
+    border:  1px solid purple;
+    padding: 0px 5px;
+    box-sizing: border-box;
+}
+#toast-container {
+    top: auto !important;
+    right: auto !important;
+    bottom: 10%;
+    left:7%;  
+  }
+  

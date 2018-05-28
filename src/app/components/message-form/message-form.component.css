@@ -1,0 +1,14 @@
+.chatcontrol{
+
+}
+
+.m-t-10{
+  margin-top: 10px;
+}
+
+
+#message-writer-input-wrapper{
+  border: thin solid #000;
+  padding: 10px;
+  border-radius: 10px
+}

@@ -1,0 +1,25 @@
+.chatform{
+   max-width: 500px;
+    height: 500px;
+
+}
+
+.bottom-fixed{
+  margin-left: 310px !important;
+  position : fixed;
+  left : 0px;
+  bottom : 0px;
+  width:100%;
+  }
+  .wrapper{position:relative;}
+.bottom{position:absolute; bottom:0;width: 100%}
+
+#message--writer-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    max-width: 500px;
+    padding: 15px 10px;
+}

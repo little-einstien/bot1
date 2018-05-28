@@ -1,0 +1,74 @@
+.p-10{
+  padding:10px;
+}
+.m-b-10{
+  margin-bottom: 10px;
+}
+img.avatar {
+  width: 40px;
+  height: 40px;
+}
+
+
+.user {
+  width: 100%;
+  float: left;
+  clear: both;
+}
+.user .avatar {
+  float: left;
+  width: 40px;
+}
+.user .message {
+  float: left;
+  width: calc(100% - 60px);
+  margin-left: 20px;
+  /* color:  #8FE388; */
+  background-color:currentColor; 
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  position: relative;
+  border-top-left-radius:  0px;
+  margin-top: 10px;
+  min-height: 50px;
+}
+.user .message:before {
+  content: '';
+  position: absolute;
+  left: -14px;
+  top: 0px;
+  border-style: solid;
+  border-width: 7px;
+  border-color: currentColor currentColor transparent transparent;
+}
+.bot {
+  width: 100%;
+  float: left;
+  clear: both;
+}
+.bot .avatar {
+  float: right;
+  vertical-align: middle;
+}
+.bot .message {
+  float: left;
+  width: calc(100% - 60px);
+  margin-right: 20px;
+  background-color: currentColor  ;
+  text-align:  right;
+  padding: 10px 10px 10px 10px;
+  border-radius: 10px;
+  position: relative;
+  border-top-right-radius:  0px;
+  margin-top: 10px;
+  min-height: 50px;
+}
+.bot .message:before {
+  content: '';
+  position: absolute;
+  right: -14px;
+  top: 0px;
+  border-style: solid;
+  border-width: 7px;
+  border-color: currentColor transparent transparent currentColor;
+}

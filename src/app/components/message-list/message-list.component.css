@@ -1,0 +1,5 @@
+.chatlist ul{
+    height: calc(500px - 76px);
+    
+    width: 100%;
+}
