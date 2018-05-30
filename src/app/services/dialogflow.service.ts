@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Message } from '../models/message';
 
 @Injectable({
   providedIn: 'root'
@@ -9,29 +10,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DialogflowService {
 
   private baseURL: string = "http://localhost/api/";
-  // private token: string = environment.token;
-  private token: string = "ce1d01dc31b946fa8740ae14100f5ddb";
-   project: string = "ce1d01dc31b946fa8740ae14100f5ddb";
-
   constructor(private http: HttpClient){}
-
-  public getResponse(query: string){
-    let data = {
-      query : query,
-      lang: 'en',
-      sessionId: '12345'
-    }
-    let url = this.baseURL + this.project+ '/' +query;
+  project ;
+  public getResponse(msg:Message,botinit){
+    debugger;
     return new Promise((resolve, reject) => {
-        this.http.get(url).subscribe(res => {
-          resolve(res);
-        });
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json'
+        })
+      };  
+      this.http.post(this.baseURL, {pid:this.project,q:msg.content}, httpOptions).subscribe(res => {
+        resolve(res);
+      });
     });
-  }
-
-  public getHeaders(){
-    let headers = new Headers();
-    headers.append('Authorization', `Bearer ${this.token}`);
-    return headers;
   }
 }

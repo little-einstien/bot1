@@ -12,24 +12,25 @@ export class MessageFormComponent implements OnInit {
   private message : Message;
   @Input('props')
   private props ;
+  @Input('botinit')
+  private botinit ;
 
   @Input('messages')
   private messages : Message[] = [];
 
   ngOnInit() {
+    console.log(this.botinit)
     //this.message = {'content':''};
     //this.messages =[];
 
   }
-
-
   public sendMessage(): void {
     this.message.timestamp = new Date();
     this.messages.push(this.message);
-    this.dialogFlowService.getResponse(this.message.content).then((res:any) => {
+    this.dialogFlowService.getResponse(this.message,this.botinit).then((res:any) => {
       console.log(res);
       this.messages.push(
-        new Message(res['resp'][0]  , 'assets/images/bot.png', 'bot',res.timestamp)
+        new Message(res['res'][0]  , 'assets/images/bot.png', 'bot',res.timestamp)
       );
     });
     console.log(this.messages);
