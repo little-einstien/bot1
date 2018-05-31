@@ -10,7 +10,7 @@ import { DialogflowService } from '../../services/dialogflow.service';
 })
 export class BotComponent implements OnInit {
   props = {
-    background:"white",
+    background:"light green",
     message_form:{background:"white"},
     bot_color:"red-text",
     user_color:" pink-text text-darken-4",
