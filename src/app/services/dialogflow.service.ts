@@ -9,7 +9,7 @@ import { Message } from '../models/message';
 })
 export class DialogflowService {
 
-  private baseURL: string = "http://localhost/api/";
+  private baseURL: string = "http://localhost:4203/api";
   constructor(private http: HttpClient){}
   project ;
   public getResponse(msg:Message,botinit){

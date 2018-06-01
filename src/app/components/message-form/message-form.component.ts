@@ -1,13 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../../models/message';
 import { DialogflowService } from '../../services/dialogflow.service'
+import { SpeechService } from '../../services/speech.service';
+
 @Component({
   selector: 'message-form',
   templateUrl: './message-form.component.html',
   styleUrls: ['./message-form.component.css']
 })
 export class MessageFormComponent implements OnInit {
-  constructor(private dialogFlowService: DialogflowService) { }
+  constructor(private dialogFlowService: DialogflowService,private  speech : SpeechService ) { }
   @Input('message')
   public  message : Message;
   @Input('props')
@@ -32,6 +34,7 @@ export class MessageFormComponent implements OnInit {
       this.messages.push(
         new Message(res['res'][0]  , 'assets/images/bot.png', 'bot',res.timestamp)
       );
+      this.speech.speak(res['res'][0]);
     });
     console.log(this.messages);
     this.message = new Message('', 'assets/images/user.png','user');
