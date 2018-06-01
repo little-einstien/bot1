@@ -1,5 +1,4 @@
 <div class="chatlist" #chatlist style="height: calc(100vh - 102px);" >
-<div class="chatlist" #chatlist style="height: calc(500px - 76px);" >
   <ul class="list-group">
     <message-item *ngFor="let msg of messages" [message]="msg" [props] = "props"></message-item>
   </ul>

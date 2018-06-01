@@ -45,5 +45,9 @@ onKeydown(event) {
     console.log(event);
   }
 }
+listen(speakBtn){
+  this.speech.listen();
+  speakBtn.classList.add('pulse')
+}
 
 }

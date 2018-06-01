@@ -12,18 +12,18 @@
 }
 
 input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]){
-    border-bottom-color:  purple;
-    box-shadow: 0 1px 0 0 purple;
+    border-bottom-color:  transparent;
+    box-shadow: 0 1px 0 0 transparent;
 }
 #voice-input {
     position:  absolute;
-    right: 30px;
-    top: 30px;
+    right: 20px;
+    top: 13px;
     padding:  0px;
 }
 
 #message-writer-input-wrapper input {
-    border:  1px solid purple;
+    border:  1px solid black;
     padding: 0px 5px;
     box-sizing: border-box;
 }
@@ -33,4 +33,4 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     bottom: 10%;
     left:7%;  
   }
-  
+  .pointer {cursor: pointer;}

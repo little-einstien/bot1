@@ -7,6 +7,7 @@ const artyom = new Artyom();
 })
 export class SpeechService {
   UserDictation;
+  settings;
   constructor() {
     // Start the commands !
     /*artyom.initialize({
@@ -24,27 +25,32 @@ export class SpeechService {
     }).catch((err) => {
       console.error("Artyom couldn't be initialized: ", err);
     });*/
-    this.UserDictation = artyom.newDictation({
-      continuous: true, // Enable continuous if HTTPS connection
+    this.settings = {
+      continuous: false, // Don't stop never because i have https connection
       onResult: function (text) {
-        // Do something with the text
+        // text = the recognized text
         console.log(text);
+        if(text){
+          document.getElementById('user-input')['value'] = text;
+          document.getElementById('voice-input').classList.remove('pulse');
+        }
       },
       onStart: function () {
         console.log("Dictation started by the user");
       },
       onEnd: function () {
-        alert("Dictation stopped by the user");
+        console.log("Dictation stopped by the user");
       }
-    });
+    }
 
-
+    this.UserDictation = artyom.newDictation(this.settings);
   }
+
+
   listen() {
-    artyom.fatality();// use this to stop any of
     this.UserDictation.start();
   }
-  stop() {
+  stopListening() {
     this.UserDictation.stop();
   }
   speak(word) {
