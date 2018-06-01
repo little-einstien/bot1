@@ -14,6 +14,7 @@ export class BotComponent implements OnInit {
     message_form:{background:"white"},
     bot_color:"orange-text",
     user_color:"cyan-text text-darken-4",
+    header_background : "cyan"
   };
   botinit = {val:'hfjhg'};
   ngOnInit(): void {
