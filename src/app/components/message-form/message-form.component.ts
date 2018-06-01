@@ -9,14 +9,14 @@ import { DialogflowService } from '../../services/dialogflow.service'
 export class MessageFormComponent implements OnInit {
   constructor(private dialogFlowService: DialogflowService) { }
   @Input('message')
-  private message : Message;
+  public  message : Message;
   @Input('props')
-  private props ;
+  public props ;
   @Input('botinit')
-  private botinit ;
+  public botinit ;
 
   @Input('messages')
-  private messages : Message[] = [];
+  public messages : Message[] = [];
 
   ngOnInit() {
     console.log(this.botinit)
