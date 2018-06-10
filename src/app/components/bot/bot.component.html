@@ -1,6 +1,15 @@
-<div  class="chatform chat wrapper {{props.background}} white-text">
-<div class="header black-text {{props.header_background}}">This is title<span class="close right pointer" (click) = "close()">  <i class="small material-icons">close</i></span></div>
-    <message-list [messages]="messages" [props] = "props"></message-list>
-    <message-form [message]="message" id="message--writer-wrapper" [messages]="messages" class="bottom col s12 " [props] = "props" ></message-form>
+<div class="chatform chat wrapper  white-text" [ngStyle] = "{'background' :  props.bg_clr}">
+
+  <div class="header black-text" [ngStyle] = "{'background' :  props.h_clr}">{{props.header}}
+    <span class="close right pointer" (click)="close()">
+      <i class="small material-icons">close</i>
+    </span>
   </div>
-  
+  <div class="chatlist" #chatlist >
+      <perfect-scrollbar #scrollRef style="height: calc(100vh - 132px);" [config]="config">
+
+      <message-list (responseClick)="getResponse($event)" [messages]="messages" [props]="props"></message-list>
+    </perfect-scrollbar>
+  </div>
+  <message-form [scroll]  = "scrollRef" [message]="message" id="message--writer-wrapper" [messages]="messages" class="bottom col s12 " [props]="props"></message-form>
+</div>

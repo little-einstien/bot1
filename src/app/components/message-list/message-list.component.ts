@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, ViewChild, ViewChildren, QueryList, ElementRef, EventEmitter, Output } from '@angular/core';
 import { Message } from '../../models/message';
 import { MessageItemComponent } from '../message-item/message-item.component';
 
@@ -8,7 +8,7 @@ import { MessageItemComponent } from '../message-item/message-item.component';
   styleUrls: ['./message-list.component.css']
 })
 export class MessageListComponent implements OnInit, AfterViewInit {
-
+  @Output() responseClick: EventEmitter<any> = new EventEmitter();
   @Input('messages')
   public messages: Message[];
   @Input('props')
@@ -25,21 +25,12 @@ export class MessageListComponent implements OnInit, AfterViewInit {
     console.log('Hello ngAfterViewInit');
     this.chatItems.changes.subscribe(elements => {
        console.log('messsage list changed: ' + this.messages.length);
-      this.scrollToBottom();
     });
-  }
-
-  private scrollToBottom(): void {
-    try {
-      this.chatList.nativeElement.scrollTop = this.chatList.nativeElement.scrollHeight;
-    }
-    catch (err) {
-      console.log(err);
-      console.log('Could not find the "chatList" element.');
-    }
   }
 
   ngOnInit() {
   }
-
+  getResponse($event){
+    this.responseClick.emit($event);
+  }
 }

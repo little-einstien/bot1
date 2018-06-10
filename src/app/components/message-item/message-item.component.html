@@ -1,7 +1,24 @@
-<li class="list-group-item col p-10 m-b-10 {{message.type}}" >
-  <img [src]="message.avatar" class="avatar col s2"/>
-  <div class="message {{message.type == 'bot' ? props.bot_color : props.user_color}}">
-    <span class="white-text">{{message.content}}</span>
+<li class="list-group-item col p-10 m-b-10 {{message.type}}">
+  <img [src]="message.avatar" class="avatar col s2" />
+  <div class="message " [ngStyle] = "{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+    <span [hidden]="message.content.type != 1" class="white-text">
+      {{message.content.txt}}
+    </span>
+    <span [hidden]="message.content.type != 2" class="white-text">
+      <div class="row" style="margin: 0px;">
+        <div class="col s12 m6">
+          <div class="card">
+            <div class="card-content black-text">
+              <p class="left" style="margin:10px;">{{message.content.txt}}</p>
+              <a *ngFor="let btn of message.content.children" (click)="getResponse(btn.id)" class=" col s12 normal-btn waves-effect waves-grey red btn"
+                style="float:  none;">
+                {{btn.txt}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </span>
   </div>
   <!-- <div class="timeform">
     <i class="fa fa-clock-o" aria-hidden="true"></i> <span class="timestamp">at {{message.timestamp | date : 'dd/MM/yyyy' }}</span>

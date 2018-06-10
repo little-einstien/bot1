@@ -16,6 +16,8 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     box-shadow: 0 1px 0 0 transparent;
 }
 #voice-input {
+    height: 36px;
+    width: 36px;
     position:  absolute;
     right: 20px;
     top: 13px;
@@ -26,6 +28,7 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     border:  1px solid black;
     padding: 0px 5px;
     box-sizing: border-box;
+    margin: 0px;
 }
 #toast-container {
     top: auto !important;
@@ -34,3 +37,22 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     left:7%;  
   }
   .pointer {cursor: pointer;}
+
+  .normal-btn{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400 !important;
+    letter-spacing: 2.5px !important;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 1px !important;
+    border-radius: 10px 10px;
+    box-shadow: 0 12px 24px 0 rgba(52, 73, 94, 0.1);
+    padding: 4px 33px 6px 36px;
+    color: #FFFFFF !important;
+    background-color: #00AAFF;
+    height: auto;
+    padding: 5px 15px;
+    float: none !important;
+    margin-bottom: 10px;
+}

@@ -55,7 +55,7 @@ img.avatar {
   width: calc(100% - 60px);
   margin-right: 20px;
   background-color: currentColor  ;
-  text-align:  right;
+  /* text-align:  right; */
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
   position: relative;
@@ -71,4 +71,13 @@ img.avatar {
   border-style: solid;
   border-width: 7px;
   border-color: currentColor transparent transparent currentColor;
+}
+
+.card{
+  border-radius: 10px 10px !important;
+  -webkit-box-shadow: none !important;
+  background: transparent; 
+}
+.card .card-content {
+  padding: 0px !important;
 }

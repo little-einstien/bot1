@@ -1,6 +1,6 @@
 
-<div class="chatcontrol input-field  {{props.message_form.background}}" id="message-writer-input-wrapper">
-  <input type="text" id = "user-input" (keydown)="onKeydown($event)" class="form-control chatinput " [(ngModel)]="message.content"/>
+<div class="chatcontrol input-field  " [ngStyle] = "{'background' : props.form_bg_clr}" id="message-writer-input-wrapper">
+  <input type="text" id = "user-input" (keydown)="onKeydown($event)" class="form-control chatinput " [(ngModel)]="message.content.txt"/>
   <a class="waves-effect waves-teal btn-floating " #voicebtn (click) = "listen(voicebtn)" id="voice-input"><i class="material-icons white-text">keyboard_voice</i>  </a>
   <!-- <but/ton class="btn btn-success sendbtn" (click)="sendMessage()">Send</button> -->
 </div>

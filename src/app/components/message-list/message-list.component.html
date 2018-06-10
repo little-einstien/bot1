@@ -1,5 +1,7 @@
-<div class="chatlist" #chatlist style="height: calc(100vh - 102px);" >
+<!-- <div class="chatlist" #chatlist style="height: calc(100vh - 102px);" >
+    <ng-scrollbar [autoHide] = "true"> -->
   <ul class="list-group">
-    <message-item *ngFor="let msg of messages" [message]="msg" [props] = "props"></message-item>
+    <message-item (responseClick) = "getResponse($event)" class="animate"  *ngFor="let msg of messages" [message]="msg" [props] = "props"></message-item>
   </ul>
-</div>
+  <!-- </ng-scrollbar> -->
+<!-- </div> -->
