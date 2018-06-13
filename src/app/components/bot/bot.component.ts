@@ -17,17 +17,17 @@ export class BotComponent implements OnInit {
   public message: Message = new Message({txt:'',type:1}, 'assets/images/user.png', 'user', new Date());;
   
   public messages: Message[] = [
-    new Message({txt: 'Welcome i am your assitant',type:1}, 'assets/images/bot.png', 'bot', new Date())
+    new Message({txt: 'Welcome i am your assitant',type:3}, 'assets/images/bot.png', 'bot', new Date())
   ];
   public botint: boolean;
   public flow;
 
   props = {
     bg_clr: "green",
-    h_clr:'',
-    bcb_clr: "blue-text",
-    ucb_clr: "grey-text text-darken-4 ",
-    header:'',
+    h_clr:'green',
+    bcb_clr: "blue",
+    ucb_clr: "grey",
+    header:'green',
     form_bg_clr:'white'
   };
   botinit = { val: 'hfjhg' };
@@ -56,6 +56,8 @@ export class BotComponent implements OnInit {
                     new Message({txt : this.flow.nodes[startingNode].label,type:2,children : this.getChildren(startingNode,this.flow.edges)}, 'assets/images/bot.png', 'bot', new Date())
                   ];
                 }
+              }).catch((err) => {
+                  console.log(err);
               });
         });
       }

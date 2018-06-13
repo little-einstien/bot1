@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.0.0",
     "@angular/router": "^6.0.0",
     "core-js": "^2.5.4",
+    "materialize-css": "^1.0.0-rc.1",
     "ngx-perfect-scrollbar": "^6.2.0",
     "ngx-scrollbar": "^2.1.0",
     "rxjs": "^6.0.0",

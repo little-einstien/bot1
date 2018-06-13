@@ -1,0 +1,65 @@
+<div class="card white">
+  <div class="card-content">
+    <ul class="stepper linear">
+      <li class="step active">
+        <div class="step-title waves-effect waves-dark black-text">Appointment Details</div>
+        <div class="step-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <span class="col s2">Start : </span>
+              <input type="text" #sdate [(ngModel)]="st" class="datepicker col s4">
+              <span class="col s2">End : </span>
+              <input type="text" #stime [(ngModel)]="et" class="timepicker col s4">
+            </div>
+            <div class="input-field col s12">
+              <span class="col s2">Start : </span>
+              <input type="text" #edate [(ngModel)]="st" class="datepicker col s4">
+              <span class="col s2">End : </span>
+              <input type="text" #etime [(ngModel)]="et" class="timepicker col s4">
+            </div>
+          </div>
+          <div class="row">
+            <div class="step-actions">
+              <button class="waves-effect waves-dark btn-flat next-step black-text" (click)="anyThing()">Continue</button>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-title waves-effect waves-dark black-text">Details</div>
+        <div class="step-content">
+          <div class="row">
+            <div class="input-field col s12">
+              <span class="col s2">Title of appointment</span>
+              <input placeholder="Placeholder" [(ngModel)]="title" id="first_name" type="text" class="validate col s10">
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <span class="col s2">Remarks of appointment</span>
+              <input placeholder="Placeholder" [(ngModel)]="remarks" id="first_name" type="text" class="validate col s10">
+
+            </div>
+          </div>
+          <div class="row col s12">
+            <div class="step-actions">
+              <button class="waves-effect waves-dark btn next-step black-text">CONTINUE</button>
+              <button class="waves-effect waves-dark btn-flat previous-step black-text">BACK</button>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-title waves-effect waves-dark black-text">Callback</div>
+        <div class="step-content">
+          <div class="row col s12">
+            <div class="step-actions">
+              <button class="waves-effect waves-dark btn next-step" (click)="saveAppointment()">Confirm Booking</button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+  </div>
+</div>

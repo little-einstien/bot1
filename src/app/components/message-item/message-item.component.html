@@ -1,9 +1,12 @@
-<li class="list-group-item col p-10 m-b-10 {{message.type}}">
+<li class="  list-group-item col p-10 m-b-10 {{message.type}}">
   <img [src]="message.avatar" class="avatar col s2" />
-  <div class="message " [ngStyle] = "{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+  <div class="message fadeIn  animated" [ngStyle] = "{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
     <span [hidden]="message.content.type != 1" class="white-text">
       {{message.content.txt}}
     </span>
+    <span [hidden]="message.content.type != 3" class="white-text">
+        <app-registration-stepper></app-registration-stepper>
+      </span>
     <span [hidden]="message.content.type != 2" class="white-text">
       <div class="row" style="margin: 0px;">
         <div class="col s12 m6">

@@ -14,9 +14,10 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
+import { RegistrationStepperComponent } from './components/registration-stepper/registration-stepper.component';
 @NgModule({
   declarations: [
-    AppComponent, MessageFormComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent
+    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent
 
   ],
   imports: [

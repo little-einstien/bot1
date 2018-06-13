@@ -35,10 +35,12 @@ export class DialogflowService {
           'Content-Type': 'application/json'
         })
       };
-      let url = this.apiRoot + '/getprojectdetails';
-      this.http.post(url, { pid: projectid }, httpOptions).subscribe(res => {
+      let url = `${this.apiRoot}/api/projects/${projectid}`;
+      this.http.get(url, httpOptions).subscribe(res => {
+        debugger;
         if (res['status'] == SUCCESS) {
-          resolve(res['data']);
+          resolve(res['data'][0]);
+          
         }
       });
     });
@@ -46,9 +48,12 @@ export class DialogflowService {
   
  getFlow(pid){
   return new Promise((resolve, reject) => {
-    this.http.get(this.apiRoot + '/api/flows/'+pid).subscribe(res => {
+    this.http.get(`${this.apiRoot}/api/flows/${pid}`).subscribe(res => {
       if(res['status'] == SUCCESS){
         resolve(res['data'][0]);
+      }
+      else{
+        reject(null);
       }
     });
   });
@@ -66,4 +71,21 @@ export class DialogflowService {
     });
   });
  }
+ 
+ saveAppointment(appointment) {
+  return new Promise((resolve, reject) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let url = `${this.apiRoot}/api/appointments`;
+    this.http.post(url, appointment, httpOptions).subscribe(res => {
+      if (res) {
+        alert("Appointment saved");
+      }
+      // resolve(res);
+    });
+  });
+}
 }
