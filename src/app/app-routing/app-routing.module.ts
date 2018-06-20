@@ -7,6 +7,7 @@ import { BotComponent } from '../components/bot/bot.component';
 
 const routes : Routes = [
   {path:'project/:project',component:BotComponent},
+  {path:'project/:project',component:BotComponent},
 ]
 @NgModule({
   imports: [

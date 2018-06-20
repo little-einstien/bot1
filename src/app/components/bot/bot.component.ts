@@ -14,10 +14,10 @@ export class BotComponent implements OnInit {
   @ViewChild(PerfectScrollbarComponent) componentRef?: PerfectScrollbarComponent;
   public type: string = 'component';
   @ViewChild(PerfectScrollbarDirective) directiveRef?: PerfectScrollbarDirective;
-  public message: Message = new Message({txt:'',type:1}, 'assets/images/user.png', 'user', new Date());;
+  public message: Message = new Message({txt:'',type:0}, 'assets/images/user.png', 'user', new Date());;
   
   public messages: Message[] = [
-    new Message({txt: 'Welcome i am your assitant',type:3}, 'assets/images/bot.png', 'bot', new Date())
+    new Message({txt: 'Welcome i am your assitant',type:0}, 'assets/images/bot.png', 'bot', new Date())
   ];
   public botint: boolean;
   public flow;
@@ -51,7 +51,7 @@ export class BotComponent implements OnInit {
                 this.flow = flow['flow'];
                 if (flow['sp']) {
                   let startingNode = flow['sp'];
-                  this.message = new Message({txt:'',type:1}, 'assets/images/user.png', 'user', new Date());
+                  this.message = new Message({txt:'',type:0}, 'assets/images/user.png', 'user', new Date());
                   this.messages = [ 
                     new Message({txt : this.flow.nodes[startingNode].label,type:2,children : this.getChildren(startingNode,this.flow.edges)}, 'assets/images/bot.png', 'bot', new Date())
                   ];
@@ -71,7 +71,11 @@ export class BotComponent implements OnInit {
     let to = [];
     for (let _i = 0; _i < data.length; _i++) {
       if(data[_i].from == parent){
-        to.push({id : data[_i].to ,  txt : this.flow.nodes[data[_i].to].btn_txt} );
+        to.push({id : data[_i].to ,  txt : this.flow.nodes[data[_i].to].as_btn ? this.flow.nodes[data[_i].to].btn_txt : this.flow.nodes[data[_i].to].label,
+          txt_color : this.flow.nodes[data[_i].to].txt_color,
+          color : this.flow.nodes[data[_i].to].color,
+          as_btn : this.flow.nodes[data[_i].to].as_btn
+        } );
       }
     }
     return to;

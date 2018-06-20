@@ -15,9 +15,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 import { RegistrationStepperComponent } from './components/registration-stepper/registration-stepper.component';
+import { EventTrackerComponent } from './components/event-tracker/event-tracker.component';
+import { ScheduleViewerComponent } from './components/schedule-viewer/schedule-viewer.component';
+import { WindowRef } from './WindowRef';
 @NgModule({
   declarations: [
-    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent
+    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent, EventTrackerComponent, ScheduleViewerComponent
 
   ],
   imports: [
@@ -26,7 +29,7 @@ import { RegistrationStepperComponent } from './components/registration-stepper/
   providers: [{
     provide: PERFECT_SCROLLBAR_CONFIG,
     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-  }],
+  } ,WindowRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

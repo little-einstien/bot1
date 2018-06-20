@@ -28,6 +28,11 @@
   <app-root></app-root>
 </body>
 <script>
-  
+    window.initStepper = function(){ 
+      $('.stepper').activateStepper();
+    }
+    function anyThing() {
+       $('.stepper').nextStep();
+    }
   </script>
 </html>

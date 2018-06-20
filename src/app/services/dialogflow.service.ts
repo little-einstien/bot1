@@ -22,7 +22,7 @@ export class DialogflowService {
           'Content-Type': 'application/json'
         })
       };  
-      this.http.post(this.baseURL, {pid:this.project,q:msg.content}, httpOptions).subscribe(res => {
+      this.http.post(this.baseURL, {pid:this.project,q:msg.content['txt']}, httpOptions).subscribe(res => {
         resolve(res);
       });
     });

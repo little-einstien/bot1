@@ -33,13 +33,19 @@ export class MessageFormComponent implements OnInit {
     this.messages.push(this.message);
     this.dialogFlowService.getResponse(this.message,this.botinit).then((res:any) => {
       console.log(res);
-      this.messages.push(
-        new Message({txt : res['res'][0],type:1,children : []}  , 'assets/images/bot.png', 'bot',res.timestamp)
-      );
-      this.speech.speak(res['res'][0]);
+      for(let i = 0 ; i<res['res'].length ; i++){
+        this.messages.push(
+          new Message(res['res'][i], 'assets/images/bot.png', 'bot', new Date(), res)
+        );
+      }
+      setTimeout(() => {this.scrollRef['directiveRef'].scrollToBottom()},250);
+      // this.messages.push(
+      //   new Message({txt : res['res'][0],type:1,children : []}  , 'assets/images/bot.png', 'bot',res.timestamp)
+      // );
+      //this.speech.speak(res['res'][0]);
     });
     console.log(this.messages);
-    this.message = new Message({txt: '',type:1 ,children : []}, 'assets/images/user.png','user');
+    this.message = new Message({txt: '',type:0 ,children : []}, 'assets/images/user.png','user');
     setTimeout(() => {this.scrollRef['directiveRef'].scrollToBottom()},500);
 }
 onKeydown(event) {

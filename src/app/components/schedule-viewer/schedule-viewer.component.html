@@ -1,0 +1,14 @@
+ <!-- Modal Structure -->
+ <div id="modal1" class="modal">
+   <div class="modal-content">
+      <h4>Choose the slot</h4>
+      <div *ngFor="let row of data" class="row">
+          <div class="col s4"><b>{{row.date}}</b></div>
+          <div *ngFor="let slot of row.slots" class="col s2">{{slot}}</div> 
+          <a class="col s2 normal-btn btn waves-effect waves-light red"><i class="material-icons">add</i></a>
+      </div>
+   <div class="modal-footer">
+     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+   </div>
+ </div>
+         

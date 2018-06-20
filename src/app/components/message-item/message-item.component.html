@@ -1,29 +1,114 @@
-<li class="  list-group-item col p-10 m-b-10 {{message.type}}">
+<!-- <li  *ngIf = "message.content.type == 0" class="  list-group-item col p-10 m-b-10 {{message.type}}">
   <img [src]="message.avatar" class="avatar col s2" />
-  <div class="message fadeIn  animated" [ngStyle] = "{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+  <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
     <span [hidden]="message.content.type != 1" class="white-text">
       {{message.content.txt}}
     </span>
-    <span [hidden]="message.content.type != 3" class="white-text">
-        <app-registration-stepper></app-registration-stepper>
+  </div>
+</li>
+<span *ngIf="message.content.type == 1">
+<li *ngFor="let txt of message.content.txt_resps" class="  list-group-item col p-10 m-b-10 {{message.type}}">
+  <img [src]="message.avatar" class="avatar col s2" />
+  <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+    <span [hidden]="message.content.type != 1" class="white-text">
+        {{txt}}
+    </span>
+  </div>
+</li>
+<li   *ngIf = "message.content.type == 2" class="  list-group-item col p-10 m-b-10 {{message.type}}">
+  <img [src]="message.avatar" class="avatar col s2" />
+  <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+      <span class="white-text">
+          <div class="row" style="margin: 0px;">
+            <div class="col s12 m6">
+              <div class="card">
+                <div class="card-content black-text">
+                  <p class="left" style="margin:10px;">{{message.content.txt}}</p>
+                  <a *ngFor="let btn of message.content.children" (click)="getResponse(btn.id)" class=" col s12 normal-btn waves-effect waves-grey red btn"
+                    style="float:  none;">
+                    {{btn.txt}}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+  </div>
+</li>
+
+<li  *ngIf = "message.content.type == 3" class="  list-group-item col p-10 m-b-10 {{message.type}}">
+  <img [src]="message.avatar" class="avatar col s2" />
+  <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+    <app-event-tracker [response] = "message.content.step_resp" ></app-event-tracker>
+  </div>
+</li>
+<li   class="  list-group-item col p-10 m-b-10 {{message.type}}">
+    <img [src]="message.avatar" class="avatar col s2" />
+    <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+      <span>{{message.content.type}}</span>
+    </div>
+  </li> -->
+<span *ngIf="message.content.type == 1">
+  <li *ngFor="let txt of message.content.txt_resps" class="list-group-item col s12 p-10 m-b-10 {{message.type}}">
+    <!-- <img [src]="message.avatar" class="avatar col s2 m-l-0" />
+        <div class="message orange-text">
+          <span  class="white-text">
+            {{txt}}
+          </span>
+        </div> -->
+    <img [src]="message.avatar" class="avatar col s2" />
+    <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+      <span [hidden]="message.content.type != 1" class="white-text">
+        {{txt}}
       </span>
-    <span [hidden]="message.content.type != 2" class="white-text">
+    </div>
+
+  </li>
+</span>
+<li *ngIf="message.content.type == 2" class="list-group-item col s12 p-10 m-b-10 {{message.type}}">
+  <img [src]="message.avatar" class="avatar col s2" />
+  <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+    <span class="white-text">
       <div class="row" style="margin: 0px;">
         <div class="col s12 m6">
           <div class="card">
             <div class="card-content black-text">
               <p class="left" style="margin:10px;">{{message.content.txt}}</p>
-              <a *ngFor="let btn of message.content.children" (click)="getResponse(btn.id)" class=" col s12 normal-btn waves-effect waves-grey red btn"
-                style="float:  none;">
-                {{btn.txt}}
-              </a>
+              <span *ngFor="let btn of message.content.children">
+                <a *ngIf="btn.as_btn" (click)="getResponse(btn.id)" class=" col s12 normal-btn waves-effect waves-grey btn" [ngStyle]="{'background': btn.color,'float':  'none','color':btn.txt_color +'!important'}">
+                  {{btn.txt}}
+                </a>
+                <span *ngIf="!btn.as_btn" class=" col s12  waves-effect waves-grey">
+                  {{btn.txt}}
+                </span>
+              </span>
+
             </div>
           </div>
         </div>
       </div>
     </span>
   </div>
-  <!-- <div class="timeform">
-    <i class="fa fa-clock-o" aria-hidden="true"></i> <span class="timestamp">at {{message.timestamp | date : 'dd/MM/yyyy' }}</span>
-  </div> -->
 </li>
+<li *ngIf="message.content.type == 3" class="list-group-item col s12 p-10 m-b-10 {{message.type}}">
+  <img [src]="message.avatar" class="avatar col s2 m-l-0" />
+  <div class="message orange-text">
+    <app-event-tracker [response]="message.content.step_resp"></app-event-tracker>
+  </div>
+</li>
+<span *ngIf="message.content.type == 0">
+  <li class="list-group-item col s12 p-10 m-b-10 {{message.type}}">
+    <!-- <img [src]="message.avatar" class="avatar col s2 m-l-0" />
+          <div class="message orange-text">
+            <span  class="white-text">
+              {{message.content.txt}}
+            </span>
+          </div> -->
+    <img [src]="message.avatar" class="avatar col s2" />
+    <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+      <span class="white-text">
+        {{message.content.txt}}
+      </span>
+    </div>
+  </li>
+</span>

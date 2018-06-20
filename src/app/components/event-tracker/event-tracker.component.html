@@ -1,0 +1,60 @@
+<div class="card white">
+    <div class="card-content">
+      <ul class="stepper linear">
+        <li class="step active">
+          <div class="step-title waves-effect waves-dark black-text">Date and time</div>
+          <div class="step-content">
+            <!-- <div class="row">
+              <div class="input-field col s12">
+                <span class="col s12">{{response.s1.sd_lbl}}</span>
+                <input type="text" #sdate [(ngModel)]="event.st" class="datepicker col s12">
+                <span class="col s12">{{response.s1.st_lbl}}</span>
+                <input type="text" #stime [(ngModel)]="event.et" class="timepicker col s12">
+              </div>
+              <div class="input-field col s12">
+                <span class="col s12">{{response.s1.ed_lbl}}</span>
+                <input type="text" #edate [(ngModel)]="event.st" class="datepicker col s12">
+                <span class="col s12">{{response.s1.et_lbl}}</span>
+                <input type="text" #etime [(ngModel)]="event.et" class="timepicker col s12">
+              </div>
+            </div> -->
+            <a class="waves-effe ct waves-light btn modal-trigger" href="#modal1">Modal</a>
+            <app-schedule-viewer [data] = "schedulingData"></app-schedule-viewer>
+            <div class="row">
+              <div class="step-actions">
+                <button class="waves-effect waves-dark btn-flat next-step black-text">Continue</button>
+              </div>
+            </div>
+            </div>
+        </li>
+        <li class="step">
+          <div class="step-title waves-effect waves-dark black-text">Add Fields</div>
+          <div class="step-content">
+            <div *ngFor="let field of response.s2.fields; index as i;" [attr.data-index]="i" class="row">
+              <div class="input-field col s12">
+                <span class="col s12">{{field.lbl}}</span>
+                <input placeholder="{{field.ph}}" [(ngModel)]="event.details[i]" type="text" class="validate col s12">
+              </div>
+            </div>
+            <div class="row col s12">
+              <div class="step-actions">
+                <a class="waves-effect waves-dark btn next-step white-text">Continue</a>
+                <a class=" waves-effect waves-dark btn previous-step white-text ">Back</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step ">
+          <div class="step-title waves-effect waves-dark black-text ">Final Message</div>
+          <div class="step-content ">
+            <div class="row">
+              <span>{{response.s3.msg}}</span>
+            </div>
+            <div class="step-actions row">
+              <a (click)="saveEvent()" class=" waves-effect waves-dark btn white-text ">{{response.s3.btn_txt}}</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      </div>
+    </div>

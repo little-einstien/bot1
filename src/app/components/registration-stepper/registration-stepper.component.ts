@@ -11,6 +11,7 @@ export class RegistrationStepperComponent implements OnInit {
   public remarks: string;
   public st: Date;
   public et: Date;
+  
   @ViewChild('sdate') sdate: ElementRef;
   @ViewChild('stime') stime: ElementRef;
   @ViewChild('edate') edate: ElementRef;
