@@ -9,8 +9,9 @@ const SUCCESS = "success";
   providedIn: 'root'
 })
 export class DialogflowService {
-  private apiRoot : string = "http://localhost:3000";
-  private baseURL: string = "http://localhost:4203/api";
+
+  private apiRoot : string = "http://35.200.142.0:3000";
+  private baseURL: string = "http://35.200.142.0:4203/api";
   //private baseURL: string = "http://35.200.131.47:4205/api";
   constructor(private http: HttpClient){}
   project ;

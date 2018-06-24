@@ -72,8 +72,8 @@
       <div class="row" style="margin: 0px;">
         <div class="col s12 m6">
           <div class="card">
-            <div class="card-content black-text">
-              <p class="left" style="margin:10px;">{{message.content.txt}}</p>
+            <div class="card-content">
+              <p class="left black-text" style="margin:10px;">{{message.content.txt}}</p>
               <span *ngFor="let btn of message.content.children">
                 <a *ngIf="btn.as_btn" (click)="getResponse(btn.id)" class=" col s12 normal-btn waves-effect waves-grey btn" [ngStyle]="{'background': btn.color,'float':  'none','color':btn.txt_color +'!important'}">
                   {{btn.txt}}
@@ -106,7 +106,7 @@
           </div> -->
     <img [src]="message.avatar" class="avatar col s2" />
     <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
-      <span class="white-text">
+      <span class="black-text">
         {{message.content.txt}}
       </span>
     </div>

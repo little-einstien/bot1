@@ -4,7 +4,7 @@
 }
 .chatform:before {
     content: '';
-    background-image: url(https://image.freepik.com/vector-gratis/doctora_23-2147513552.jpg);
+    background-image: url(http://drgeetagera.com/images/dr%20banner.png);
 	background-repeat: no-repeat;
     background-size: cover;
     display: block;
@@ -45,7 +45,7 @@
     background-color: #8a8a8a;
     color: #fff;
     height: 20px;
-    width: 100px;
+    width: 110px;
     padding-right: 10px;
     padding-left: 10px;
     margin:  0px auto;
