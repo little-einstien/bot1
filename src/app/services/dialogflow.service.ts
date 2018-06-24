@@ -23,9 +23,11 @@ export class DialogflowService {
           'Content-Type': 'application/json'
         })
       };  
-      this.http.post(this.baseURL, {pid:this.project,q:msg.content['txt']}, httpOptions).subscribe(res => {
-        resolve(res);
-      });
+      resolve({"payload":{"entities":[],"intent":{"confidence":0.9740278124809265,"name":"Book Appointment"},"intent_ranking":[{"confidence":0.9740278124809265,"name":"Book Appointment"},{"confidence":0.0034171342849731445,"name":"About google"},{"confidence":-0.06438928097486496,"name":"About me"},{"confidence":-0.37786251306533813,"name":"About Picasi"}],"text":"want to book an appointment for me"},"res":[{"txt_resps":[],"type":1},{"step_resp":{"s1":{"ed_lbl":"Ending","et_lbl":"Time","sd_lbl":"Starting","st_lbl":"Time"},"s2":{"fields":[{"lbl":"Name","ph":"Name"}]},"s3":{"btn_clr":"#f40a0a","btn_txt":"Please submit","btn_txt_clr":"#fa0c0c","msg":"Thanks Please confirm"}},"type":3}]}
+)
+//       this.http.post(this.baseURL, {pid:this.project,q:msg.content['txt']}, httpOptions).subscribe(res => {
+//         resolve(res);
+//       });
     });
   }
   
