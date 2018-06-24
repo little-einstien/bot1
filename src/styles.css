@@ -3552,3 +3552,53 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
 }
+
+.ngx-datepicker-position-bottom-right {
+  z-index: 20000;
+}
+
+
+.p-0{
+  padding : 0px !important;
+}
+
+.stepper input {
+  width: 100% !important;
+  max-width: 320px;
+  box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+}
+ul.stepper .step {
+  padding: 0 0 0 25px;
+}
+ul.stepper .step:before {
+  left: 0px;	
+}
+ul.stepper .step-content .row {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+ul.stepper .step-title {
+  padding: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+ul.stepper .step-content {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.step-content .input-field {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+ul.stepper .step-actions {
+  padding-top:  0px;
+}
+.ngx-datepicker-container .ngx-datepicker-calendar-container {
+  width: 100% !important;
+}
+.ngx-datepicker-container .ngx-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit,
+.ngx-datepicker-container .ngx-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-today {
+  height: 30px !important;
+}
+

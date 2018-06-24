@@ -88,4 +88,54 @@ export class DialogflowService {
     });
   });
 }
+getSlots(username){
+  return new Promise((resolve, reject) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let url = `${this.apiRoot}/api/slots/u/${username}`;
+    this.http.get(url, httpOptions).subscribe((res:any) => {
+      if (res.status == SUCCESS) {
+        resolve(res.data);
+      }
+      // resolve(res);
+    });
+  });
+}
+getSlotsDatewise(username,date){
+  return new Promise((resolve, reject) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let url = `${this.apiRoot}/api/slots/u/${username}`;
+    this.http.post(url,{date:date}, httpOptions).subscribe((res:any) => {
+      if (res.status == SUCCESS) {
+        resolve(res.data);
+      }else{
+        resolve(null);
+      }
+      // resolve(res);
+    });
+  });
+}
+getUsers(pid){
+  return new Promise((resolve, reject) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let url = `${this.apiRoot}/api/users/p/${pid}`;
+    this.http.get(url, httpOptions).subscribe((res:any) => {
+      if (res.status == SUCCESS) {
+        resolve(res.data);
+      }
+      // resolve(res);
+    });
+  });
+}
 }

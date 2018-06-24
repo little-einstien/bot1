@@ -1,65 +1,192 @@
-<div class="card white">
-  <div class="card-content">
-    <ul class="stepper linear">
-      <li class="step active">
-        <div class="step-title waves-effect waves-dark black-text">Appointment Details</div>
-        <div class="step-content">
-          <div class="row">
-            <div class="input-field col s12">
-              <span class="col s2">Start : </span>
-              <input type="text" #sdate [(ngModel)]="st" class="datepicker col s4">
-              <span class="col s2">End : </span>
-              <input type="text" #stime [(ngModel)]="et" class="timepicker col s4">
+<div class="card white main">
+    <div class="card-content  p-0">
+      <ul class="stepper linear">
+        <li class="step active">
+          <div class="step-title waves-effect waves-dark black-text">Date and time</div>
+          <div class="step-content">
+            <div class="row">
+              <div class="input-field col s12">
+                <span class="col s2 abc">Start : </span>
+                <!-- <input type="text" #sdate [(ngModel)]="st"  class="datepicker col s4"> -->
+                <ng-datepicker [(ngModel)]="st" [options]="options" (ngModelChange)="getSlots()"></ng-datepicker>
+                <div id="slots-viewer" *ngIf="st">
+                  <div *ngIf="mslots.length == 0  && eslots.length == 0">
+                    <span>Sorry no slots available from doctor side</span>
+                  </div>
+                  <div id="m-slots-viewer" *ngIf="mslots && mslots.length != 0">
+                    <div class="row">
+                      <span>Morning Slots</span>
+                    </div>
+                    <div class="row">
+                      <p class="col s2" *ngFor="let slot of mslots">
+                        <label>
+                          <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
+                          <span>{{slot}}</span>
+                        </label>
+                      </p>
+                    </div>
+                  </div>
+                  <div id="e-slots-viewer" *ngIf="eslots && eslots.length != 0">
+                    <div class="row">
+                      <span>Evening Slots</span>
+                    </div>
+                    <div class="row">
+                      <p class="col s2" *ngFor="let slot of eslots">
+                        <label>
+                          <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
+                          <span>{{slot}}</span>
+                        </label>
+                      </p>
+  
+                    </div>
+                  </div>
+                </div>
+                <!-- <span class="col s2">End : </span> -->
+                <!-- <input type="text" #stime [(ngModel)]="et" class="timepicker col s4"> -->
+              </div>
             </div>
-            <div class="input-field col s12">
-              <span class="col s2">Start : </span>
-              <input type="text" #edate [(ngModel)]="st" class="datepicker col s4">
-              <span class="col s2">End : </span>
-              <input  type="text" #etime [(ngModel)]="et" class="timepicker col s4">
+            <!-- 
+              <div class="input-field col s12">
+                <span class="col s2">Start : </span>
+                <input type="text" #edate [(ngModel)]="st" class="datepicker col s4">
+                <span class="col s2">End : </span>
+                <input type="text" #etime [(ngModel)]="et" class="timepicker col s4">
+              </div>
+            </div>
+            <div class="row">
+              <div class="step-actions">
+                <button class="waves-effect waves-dark btn-flat next-step black-text" (click)="anyThing()">Continue</button>
+              </div>
+            </div> -->
+            <!-- <ul class="collection with-header">
+              <li class="collection-header col s6 ">
+                <div class="input-field  col s12">
+                  <span class="col s4">Start Date label</span>
+                  <input placeholder="" [(ngModel)]="response.s1.sd_lbl" id="response" type="text" class="validate col s8">
+                </div>
+              </li>
+              <li class="collection-header col s6 ">
+                <div class="input-field  col s12">
+                  <span class="col s4">Start Time label</span>
+                  <input placeholder="" [(ngModel)]="response.s1.st_lbl" id="response" type="text" class="validate col s8">
+                </div>
+              </li>
+              <li class="collection-header col s6 ">
+                <div class="input-field  col s12">
+                  <span class="col s4">End Date label</span>
+                  <input placeholder="" [(ngModel)]="response.s1.ed_lbl" id="response" type="text" class="validate col s8">
+                </div>
+              </li>
+              <li class="collection-header col s6 ">
+                <div class="input-field  col s12">
+                  <span class="col s4">End Time label</span>
+                  <input placeholder="" [(ngModel)]="response.s1.et_lbl" id="response" type="text" class="validate col s8">
+                </div>
+              </li>
+            </ul> -->
+            <div class="row">
+              <div class="step-actions">
+                <button class="waves-effect waves-dark btn-flat next-step black-text" (click)="anyThing()">Continue</button>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="step-actions">
-              <button class="waves-effect waves-dark btn-flat next-step black-text" (click)="anyThing()">Continue</button>
+        </li>
+        <li class="step">
+          <div class="step-title waves-effect waves-dark black-text">Your Information</div>
+          <div class="step-content">
+            <!-- <div *ngFor="let field of response.s2.fields; index as i;" [attr.data-index]="i" class="row">
+              <div class="field-header col s12 valign-wrapper">
+                <span class="field-header left col s11">Filed {{i+1}}</span>
+                <span class="right col s1">
+                  <i (click)="deleteField(i)" class="fas fa-trash-alt pointer"></i>
+                </span>
+              </div>
+              <div class="input-field col s12">
+                <span class="col s2">Add field label</span>
+                <input placeholder="Enter field label" [(ngModel)]="field.lbl" type="text" class="validate col s10">
+              </div>
+              <div class="input-field col s12">
+                <span class="col s2">Add field placeholder</span>
+                <input placeholder="Enter field placeholder" [(ngModel)]="field.ph" type="text" class="validate col s10">
+              </div>
+            </div> -->
+            <div class="row">
+              <!-- <div class="field-header col s12 valign-wrapper">
+                <span class="field-header left col s11">Filed {{i+1}}</span>
+                <span class="right col s1">
+                  <i (click)="deleteField(i)" class="fas fa-trash-alt pointer"></i>
+                </span>
+              </div> -->
+              <div class="input-field col s12">
+                <span class="col s2">Full Name</span>
+                <input placeholder="Enter your full name" [(ngModel)] = "name" type="text" class="validate col s10">
+              </div>
+              <div class="input-field col s12">
+                <span class="col s2">Mobile</span>
+                <input placeholder="Enter your mobile" type="text" [(ngModel)] = "mobile" class="validate col s10">
+              </div>
+              <div class="input-field col s12">
+                <span class="col s2">Email</span>
+                <input placeholder="Enter your email" type="text" [(ngModel)] = "email" class="validate col s10">
+              </div>
+            </div>
+            <div class="row col s12">
+              <div class="step-actions">
+                <a class="waves-effect waves-dark btn-flat next-step white-text">Continue</a>
+                <!-- <a class="waves-effect waves-dark btn normal-btn white-text" (click)="addFileds()">Add field</a>
+                <a class=" waves-effect waves-dark btn normal-btn previous-step white-text ">Back</a> -->
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-title waves-effect waves-dark black-text">Details</div>
-        <div class="step-content">
-          <div class="row">
-            <div class="input-field col s12">
-              <span class="col s2">Title of appointment</span>
-              <input placeholder="Placeholder" [(ngModel)]="title" id="first_name" type="text" class="validate col s10">
+        </li>
+        <li class="step ">
+          <div class="step-title waves-effect waves-dark black-text ">Confirmation</div>
+          <div class="step-content ">
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card  darken-1">
+                  <div class="card-content ">
+                    <span class="card-title">Booking Details</span>
+                    <div class="row  p-10">
+                      <h5>{{st ? st.toUTCString() : ''}}</h5>
+                      <h6><span>slot : </span>{{selectedSlot}}</h6>
+                    </div>
+                    <div class="row p-10">
+                        <h6>{{name}}</h6>
+                        <h6>{{mobile}}</h6>
+                        <h6>{{email}}</h6>
+                      </div>
+                  </div>
+                  <!-- <div class="card-action">
+                      <a href="#">This is a link</a>
+                      <a href="#">This is a link</a>
+                    </div> -->
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <span class="col s2">Remarks of appointment</span>
-              <input placeholder="Placeholder" [(ngModel)]="remarks" id="first_name" type="text" class="validate col s10">
-
+            <!-- <div class="row col s12 ">
+            <div class="col s12">
+              <span class="col s2">Button color</span>
+              <div class="input-field col s4">
+                <input [(colorPicker)]="response.s3.btn_clr" [style.background]="response.btn_clr" [cpHeight]="200" [cpPosition]="'right'"
+                   type="text" class="validate">
+              </div>
+              <span class="col s2">Button text color</span>
+              <div class="input-field col s4">
+                <input [(colorPicker)]="response.s3.btn_txt_clr" [style.background]="response.btn_txt_clr" [cpHeight]="200" [cpPosition]="'left'"
+                  type="text" class="validate">
+              </div>
             </div>
-          </div>
-          <div class="row col s12">
-            <div class="step-actions">
-              <button class="waves-effect waves-dark btn next-step black-text">CONTINUE</button>
-              <button class="waves-effect waves-dark btn-flat previous-step black-text">BACK</button>
+          </div> -->
+            <div class="row col s12 ">
+              <div class="step-actions ">
+                <button class="waves-effect waves-dark btn next-step" (click)="saveAppointment() ">Confirm Booking</button>
+              </div>
             </div>
+  
           </div>
-        </div>
-      </li>
-      <li class="step">
-        <div class="step-title waves-effect waves-dark black-text">Callback</div>
-        <div class="step-content">
-          <div class="row col s12">
-            <div class="step-actions">
-              <button class="waves-effect waves-dark btn next-step" (click)="saveAppointment()">Confirm Booking</button>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-
+        </li>
+      </ul>
+  
+    </div>
   </div>
-</div>

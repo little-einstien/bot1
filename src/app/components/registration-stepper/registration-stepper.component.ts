@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as M from 'materialize-css';
 import { DialogflowService } from '../../services/dialogflow.service';
+import { DatepickerOptions } from 'ng2-datepicker';
+import * as frLocale from 'date-fns/locale/fr';
+
 @Component({
   selector: 'app-registration-stepper',
   templateUrl: './registration-stepper.component.html',
@@ -11,6 +14,9 @@ export class RegistrationStepperComponent implements OnInit {
   public remarks: string;
   public st: Date;
   public et: Date;
+  public name;
+  public mobile;
+  public email;
   
   @ViewChild('sdate') sdate: ElementRef;
   @ViewChild('stime') stime: ElementRef;
@@ -27,27 +33,14 @@ export class RegistrationStepperComponent implements OnInit {
   ngOnInit() {
   }
   saveAppointment() {
-    let startDate = M.Datepicker.getInstance(this.sdate.nativeElement);
-    let startTime = M.Timepicker.getInstance(this.stime.nativeElement);
-    let endDate = M.Datepicker.getInstance(this.edate.nativeElement);
-    let endTime = M.Timepicker.getInstance(this.etime.nativeElement);
-
-    startDate.date.setHours(startTime.hours);
-    startDate.date.setMinutes(startTime.minutes);
-
-    endDate.date.setHours(endTime.hours);
-    endDate.date.setMinutes(endTime.minutes);
-    let pid = 'dsd';
-    //this.dataHandlerService.currentProject.subscribe(project => pid = project.id);
-    this.dataHandlerService.saveAppointment({
-      pid: pid,
-      title: this.title,
-      remarks: this.remarks,
-      st: startDate.date.toISOString(),
-      et: endDate.date.toISOString(),
-      ap_with: "Arnav",
-      "user": { "id": "ww", "name": "gdfgd" }
-    });
+    let pid = '';
+    // this.dataHandlerService.currentProject.subscribe(project => pid = project.id);
+    // this.dataHandlerService.saveAppointment({
+    //   pid: "f7W18EB",
+    //   date : this.st.getTime(),
+    //   slot:this.selectedSlot,
+    //   "user": { "id": "ww", "name": this.name,"mobile":this.mobile,"email":this.email }
+    // });
   }
-
+  
 }

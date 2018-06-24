@@ -1,10 +1,9 @@
-<div class="chatform chat wrapper  white-text" [ngStyle] = "{'background' :  props.bg_clr}">
+<div class="chatform chat wrapper white-text">
 
-  <div class="header black-text" [ngStyle] = "{'background' :  props.h_clr}">{{props.header}}
-    <span class="close right pointer" (click)="close()">
-      <i class="small material-icons">close</i>
-    </span>
-  </div>
+	<div class="header" >
+		<img src="assets/images/powered-icon.png" border="0" alt="" title="" />
+		AI BOT
+	</div>
   <div class="chatlist" #chatlist >
       <perfect-scrollbar #scrollRef style="height: calc(100vh - 132px);" [config]="config">
 

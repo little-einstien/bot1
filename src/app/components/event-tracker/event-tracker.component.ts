@@ -4,6 +4,8 @@ import * as _ from 'lodash';
 // import * as $ from 'jquery';
 import { DialogflowService } from '../../services/dialogflow.service';
 import { WindowRef } from '../../WindowRef';
+import { DatepickerOptions } from 'ng2-datepicker';
+import * as frLocale from 'date-fns/locale/fr';
 @Component({
   selector: 'app-event-tracker',
   templateUrl: './event-tracker.component.html',
@@ -13,7 +15,24 @@ export class EventTrackerComponent implements OnInit {
   data:any[] = [];
   public event = {st:'',et:'',title:'',remarks:'',pid:'',ap_with: "Arnav",details:[],
   "user": { "id": "ww", "name": "gdfgd" }};
-  
+  public name;
+  public mobile;
+  public email;
+  public st;
+  options: DatepickerOptions = {
+    minYear: 1970,
+    maxYear: 2030,
+    displayFormat: 'MMM  DD YYYY',
+    barTitleFormat: 'MMMM YYYY',
+    dayNamesFormat: 'dd',
+    firstCalendarDay: 0, // 0 - Sunday, 1 - Monday  
+    barTitleIfEmpty: 'Click to select a date',
+    placeholder: 'Click to select a date', // HTML input placeholder attribute (default: '')
+    addClass: 'form-control', // Optional, value to pass on to [ngClass] on the input field
+    addStyle: {'width': '100%'}, // Optional, value to pass to [ngStyle] on the input field
+    fieldId: 'my-date-picker', // ID to assign to the input field. Defaults to datepicker-<counter>
+    useEmptyBarTitle: false, // Defaults to true. If set to false then barTitleIfEmpty will be disregarded and a date will always be shown 
+  };
   @ViewChild('sdate') sdate: ElementRef;
   @ViewChild('stime') stime: ElementRef;
   @ViewChild('edate') edate: ElementRef;
@@ -24,7 +43,7 @@ export class EventTrackerComponent implements OnInit {
       M.Datepicker.init(document.querySelectorAll('.datepicker'), {});
       M.Timepicker.init(document.querySelectorAll('.timepicker'), {});
     }, 1000);
-  }
+  } 
 
   ngOnInit() {
     var elem = document.querySelector('.collapsible.expandable');
@@ -55,6 +74,37 @@ export class EventTrackerComponent implements OnInit {
     this.dataHandlerService.saveAppointment(this.event);
     console.log(event);
   }
+  saveAppointment() {
+    let pid = '';
+    // this.dataHandlerService.currentProject.subscribe(project => pid = project.id);
+    this.dataHandlerService.saveAppointment({
+      pid: "f7W18EB",
+      date : this.st.getTime(),
+      slot:this.selectedSlot,
+      "user": { "id": "ww", "name": this.name,"mobile":this.mobile,"email":this.email }
+    });
+  }
+  public mslots;
+  public eslots;
+  public selectedSlot;
+  getSlots() {
+    console.log(this.st)
+    this.dataHandlerService.getSlotsDatewise('arnav', this.st.getTime()).then((slots:any) => {
+      if(slots && slots.length != 0){
+        this.mslots = slots[0]['m_slt'];
+        this.eslots = slots[0]['e_slt'];
+      }else{
+        this.mslots = [];
+        this.eslots = [];
+      }
+      
+    });
+  }
+  onSelectionChange(slot){
+    this.selectedSlot = slot;
+    //alert(slot);
+  }
+
 
   
 }
