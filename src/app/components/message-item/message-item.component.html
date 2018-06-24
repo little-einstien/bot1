@@ -92,7 +92,7 @@
 </li>
 <li *ngIf="message.content.type == 3" class="list-group-item col s12 p-10 m-b-10 {{message.type}}">
   <img [src]="message.avatar" class="avatar col s2 m-l-0" />
-  <div class="message" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
+  <div class="message" >
     <app-event-tracker [response]="message.content.step_resp"></app-event-tracker>
   </div>
 </li>
