@@ -49,6 +49,7 @@ img.avatar {
 .bot .avatar {
   float: right;
   vertical-align: middle;
+      border-radius: 25%;
 }
 .bot .message {
   float: left;
