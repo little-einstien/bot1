@@ -75,7 +75,7 @@
             <div class="card-content">
               <p class="left black-text" style="margin:10px;">{{message.content.txt}}</p>
               <span *ngFor="let btn of message.content.children">
-                <a *ngIf="btn.as_btn" (click)="getResponse(btn.id)" class=" col s12 normal-btn waves-effect waves-grey btn" [ngStyle]="{'background': btn.color,'float':  'none','color':btn.txt_color +'!important'}">
+                <a *ngIf="btn.as_btn" (click)="getResponse(btn.id)" class=" col s12 normal-btn waves-effect waves-grey btn" [ngStyle]="{'background': '#E7577A','float':  'none','color':btn.txt_color +'!important'}">
                   {{btn.txt}}
                 </a>
                 <span *ngIf="!btn.as_btn" class=" col s12  waves-effect waves-grey">
