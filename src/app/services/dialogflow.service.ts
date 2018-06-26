@@ -138,4 +138,21 @@ getUsers(pid){
     });
   });
 }
+getTemprature(lat,lon){
+
+  return new Promise((resolve, reject) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let url = `${this.apiRoot}/api/weather/${lat}/${lon}`
+    this.http.get(url, httpOptions).subscribe((res:any) => {
+      if (res.status == SUCCESS) {
+        resolve(res);
+      }
+      // resolve(res);
+    });
+  });
+}
 }

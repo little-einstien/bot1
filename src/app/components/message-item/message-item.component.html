@@ -106,8 +106,8 @@
           </div> -->
     <img [src]="message.avatar" class="avatar col s2" />
     <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
-      <span class="white-text">
-        {{message.content.txt}}
+      <span class="white-text" [innerHTML] = "message.content.txt">
+        
       </span>
     </div>
   </li>
