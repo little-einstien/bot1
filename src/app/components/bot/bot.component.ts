@@ -9,7 +9,7 @@ import { PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfec
   templateUrl: './bot.component.html',
   styleUrls: ['./bot.component.css']
 })
-export class BotComponent implements OnInit {
+export class BotComponent implements OnInit,AfterViewInit {
 
   @ViewChild(PerfectScrollbarComponent) componentRef?: PerfectScrollbarComponent;
   public type: string = 'component';
@@ -35,8 +35,12 @@ export class BotComponent implements OnInit {
 
   }
   public project;
+  
   constructor(private route: ActivatedRoute, private dialogflowService: DialogflowService) {
-    this.route.params.subscribe(params => {
+   
+  }
+  ngAfterViewInit(){
+     this.route.params.subscribe(params => {
       console.log(params);
       if (params.project) {
         this.dialogflowService.project = params.project;
