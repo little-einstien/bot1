@@ -41,25 +41,26 @@ export class BotComponent implements OnInit {
       if (params.project) {
         this.dialogflowService.project = params.project;
 
-        this.wetherMessage();
-        this.dialogflowService.getProjectDetails(params.project).then((proj) => {
-          this.project = proj;
-          this.props.bg_clr = proj['bg_clr'];
-          this.props.h_clr = proj['h_clr'];
-          this.props.ucb_clr = proj['ucb_clr'];
-          this.props.bcb_clr = proj['bcb_clr'];
-          this.props.header = proj['header'];
-          this.dialogflowService.getFlow(params.project).then((flow) => {
-            this.flow = flow['flow'];
-            if (flow['sp']) {
-              let startingNode = flow['sp'];
-              this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
-              this.messages = [
-                new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
-              ];
-            }
-          }).catch((err) => {
-            console.log(err);
+        this.wetherMessage().then(() => {
+          this.dialogflowService.getProjectDetails(params.project).then((proj) => {
+            this.project = proj;
+            this.props.bg_clr = proj['bg_clr'];
+            this.props.h_clr = proj['h_clr'];
+            this.props.ucb_clr = proj['ucb_clr'];
+            this.props.bcb_clr = proj['bcb_clr'];
+            this.props.header = proj['header'];
+            this.dialogflowService.getFlow(params.project).then((flow) => {
+              this.flow = flow['flow'];
+              if (flow['sp']) {
+                let startingNode = flow['sp'];
+                this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
+                this.messages.push(
+                  new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
+                );
+              }
+            }).catch((err) => {
+              console.log(err);
+            });
           });
         });
       }
@@ -102,6 +103,7 @@ export class BotComponent implements OnInit {
     }
   }
   wetherMessage() {
+    return new Promie((resolve,reject) => {
     this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
           this.messages.push(new Message({
             txt: `
@@ -110,6 +112,7 @@ export class BotComponent implements OnInit {
           `, type: 0
           }, 'assets/images/bot.png', 'bot', new Date()))
           console.log(data.data.name)
+        resolve();
         })
 //     if (navigator.geolocation) {
 //       navigator.geolocation.getCurrentPosition((position) => {
@@ -130,5 +133,6 @@ export class BotComponent implements OnInit {
 //     } else {
 //       alert("Geolocation is not supported by this browser.");
 //     }
+    });
   }
 }
