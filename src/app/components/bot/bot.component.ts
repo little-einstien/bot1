@@ -58,7 +58,7 @@ export class BotComponent implements OnInit {
                 this.messages.push(
                   new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
                 );
-                },500);
+                },700);
               }
             }).catch((err) => {
               console.log(err);
@@ -107,6 +107,7 @@ export class BotComponent implements OnInit {
   wetherMessage() {
     return new Promise((resolve,reject) => {
     this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
+        setTimeout(() => {
           this.messages.push(new Message({
             txt: `
           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
@@ -114,8 +115,10 @@ export class BotComponent implements OnInit {
           `, type: 0
           }, 'assets/images/bot.png', 'bot', new Date()))
           console.log(data.data.name)
+          },700)
         resolve();
         })
+      
 //     if (navigator.geolocation) {
 //       navigator.geolocation.getCurrentPosition((position) => {
 //         let lat = position.coords.latitude;
