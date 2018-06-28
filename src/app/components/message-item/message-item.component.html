@@ -57,9 +57,8 @@
           </span>
         </div> -->
     <img [src]="message.avatar" class="avatar col s2" />
-    <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}">
-      <span [hidden]="message.content.type != 1" class="white-text">
-        {{txt}}
+    <div class="message fadeIn  animated" [ngStyle]="{'color' : message.type == 'bot' ? props.bcb_clr : props.ucb_clr}"> <span *ngIf = "message.content.app"> <app-event-tracker [response]="null"></app-event-tracker></span>
+      <span [hidden]="message.content.type != 1" class="white-text" [innerHTML] = "txt">
       </span>
     </div>
 

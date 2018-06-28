@@ -41,7 +41,7 @@ export class BotComponent implements OnInit {
       if (params.project) {
         this.dialogflowService.project = params.project;
 
-        this.wetherMessage();
+//        this.wetherMessage();
         this.dialogflowService.getProjectDetails(params.project).then((proj) => {
           this.project = proj;
           this.props.bg_clr = proj['bg_clr'];
@@ -87,6 +87,7 @@ export class BotComponent implements OnInit {
     let txt = this.flow.nodes[$event].label;
     let children = this.getChildren($event, this.flow.edges);
     let type = children && children.length != 0 ? 2 : 1;
+     if($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;	
     this.messages.push(
       new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
     );

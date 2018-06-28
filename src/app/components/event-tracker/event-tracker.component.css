@@ -17,4 +17,15 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
   padding: 10px;
 }
 
+.step-content [type="radio"]:checked+span:after,
+.step-content [type="radio"].with-gap:checked+span:after {
+    background-color: rgb(231, 87, 122);
+    border-color: rgb(231, 87, 122);
 
+
+}
+
+
+ul.stepper .step.active:before, ul.stepper .step.done:before {
+    background-color:rgb(231, 87, 122);
+}

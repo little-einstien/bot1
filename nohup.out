@@ -28,3 +28,26 @@ To disable this warning use "ng config -g cli.warnings.versionMismatch false".
 [0mchunk {[1m[33mstyles[39m[22m} [1m[32mstyles.js, styles.js.map[39m[22m (styles) 18 kB [1m[33m[initial][39m[22m[1m[32m [rendered][39m[22m[0m
 [0mchunk {[1m[33mvendor[39m[22m} [1m[32mvendor.js, vendor.js.map[39m[22m (vendor) 4.12 MB [1m[33m[initial][39m[22m[1m[32m [rendered][39m[22m[0m
 ℹ ｢wdm｣: Compiled successfully.
+Your global Angular CLI version (6.0.8) is greater than your local
+version (6.0.5). The local Angular CLI version is used.
+
+To disable this warning use "ng config -g cli.warnings.versionMismatch false".
+Available Commands:
+  add Add support for a library to your project.
+  new Creates a new directory and a new Angular app.
+  generate Generates and/or modifies files based on a schematic.
+  update Updates your application and its dependencies.
+  build Builds your app and places it into the output path (dist/ by default).
+  serve Builds and serves your app, rebuilding on file changes.
+  test Run unit tests in existing project.
+  e2e Run e2e tests in existing project.
+  lint Lints code in existing project.
+  xi18n Extracts i18n messages from source code.
+  run Runs Architect targets.
+  eject Temporarily disabled. Ejects your app and output the proper webpack configuration and scripts.
+  config Get/set configuration values.
+  help Help.
+  version Outputs Angular CLI version.
+  doc Opens the official Angular API documentation for a given keyword.
+
+For more detailed help run "ng [command name] --help"
