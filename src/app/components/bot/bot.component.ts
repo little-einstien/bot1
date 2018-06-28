@@ -103,7 +103,7 @@ export class BotComponent implements OnInit {
     }
   }
   wetherMessage() {
-    return new Promie((resolve,reject) => {
+    return new Promise((resolve,reject) => {
     this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
           this.messages.push(new Message({
             txt: `
