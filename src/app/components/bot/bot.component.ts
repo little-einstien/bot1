@@ -41,7 +41,7 @@ export class BotComponent implements OnInit {
       if (params.project) {
         this.dialogflowService.project = params.project;
 
-//        this.wetherMessage();
+        this.wetherMessage();
         this.dialogflowService.getProjectDetails(params.project).then((proj) => {
           this.project = proj;
           this.props.bg_clr = proj['bg_clr'];
@@ -102,11 +102,7 @@ export class BotComponent implements OnInit {
     }
   }
   wetherMessage() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
-        this.dialogflowService.getTemprature(lat, lon).then((data: any) => {
+    this.dialogflowService.getTemprature(lat, lon).then((data: any) => {
           this.messages.push(new Message({
             txt: `
           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
@@ -115,11 +111,24 @@ export class BotComponent implements OnInit {
           }, 'assets/images/bot.png', 'bot', new Date()))
           console.log(data.data.name)
         })
-      }, (err) => {
-        console.log(err);
-      });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
+//     if (navigator.geolocation) {
+//       navigator.geolocation.getCurrentPosition((position) => {
+//         let lat = position.coords.latitude;
+//         let lon = position.coords.longitude;
+//         this.dialogflowService.getTemprature(lat, lon).then((data: any) => {
+//           this.messages.push(new Message({
+//             txt: `
+//           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
+//           <h5>please take care of your head and skin as it is ${data.data.weather[0].description} outside</h5>
+//           `, type: 0
+//           }, 'assets/images/bot.png', 'bot', new Date()))
+//           console.log(data.data.name)
+//         })
+//       }, (err) => {
+//         console.log(err);
+//       });
+//     } else {
+//       alert("Geolocation is not supported by this browser.");
+//     }
   }
 }
