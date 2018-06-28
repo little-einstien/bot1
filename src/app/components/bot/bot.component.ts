@@ -58,7 +58,7 @@ export class BotComponent implements OnInit {
                 this.messages.push(
                   new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
                 );
-                },700);
+                },1000);
               }
             }).catch((err) => {
               console.log(err);
@@ -115,7 +115,7 @@ export class BotComponent implements OnInit {
           `, type: 0
           }, 'assets/images/bot.png', 'bot', new Date()))
           console.log(data.data.name)
-          },700)
+          },500)
         resolve();
         })
       
