@@ -40,7 +40,7 @@ export class BotComponent implements OnInit {
       console.log(params);
       if (params.project) {
         this.dialogflowService.project = params.project;
-
+        
         this.wetherMessage().then(() => {
           this.dialogflowService.getProjectDetails(params.project).then((proj) => {
             this.project = proj;
@@ -54,9 +54,11 @@ export class BotComponent implements OnInit {
               if (flow['sp']) {
                 let startingNode = flow['sp'];
                 this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
+                setTimeout(() => {
                 this.messages.push(
                   new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
                 );
+                },500);
               }
             }).catch((err) => {
               console.log(err);
