@@ -102,7 +102,7 @@ export class BotComponent implements OnInit {
     }
   }
   wetherMessage() {
-    this.dialogflowService.getTemprature("", "").then((data: any) => {
+    this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
           this.messages.push(new Message({
             txt: `
           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
