@@ -112,7 +112,7 @@ export class BotComponent implements OnInit,AfterViewInit {
         setTimeout(() => {
           this.messages.push(new Message({
             txt: `
-          <p>Hey todays temperature in ${data.data.name}  is <b>${data.data.main.temp - 273.15}</b> <sup >C</sup>
+          <p>Hey todays temperature in ${data.data.name}  is <b>${data.data.main.temp - 273.15} <sup >C</sup></b>
           please take care of your Head and Skin as it is ${data.data.weather[0].description} outside</p>
           `, type: 0
           }, 'assets/images/bot.png', 'bot', new Date()))
