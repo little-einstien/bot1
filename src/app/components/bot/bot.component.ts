@@ -115,7 +115,7 @@ export class BotComponent implements OnInit,AfterViewInit {
           this.messages.push(new Message({
             txt: `
           <p>Hey todays temperature in ${data.data.name}  is <b>${data.data.main.temp - 273.15}</b> <sup >C | F </sup>
-          please take care of your head and skin as it is ${data.data.weather[0].description} outside</p>
+          please take care of your Head and Skin as it is ${data.data.weather[0].description} outside</p>
           `, type: 0
           }, 'assets/images/bot.png', 'bot', new Date()))
           console.log(data.data.name)
