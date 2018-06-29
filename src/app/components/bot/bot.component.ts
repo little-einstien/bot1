@@ -16,9 +16,7 @@ export class BotComponent implements OnInit,AfterViewInit {
   @ViewChild(PerfectScrollbarDirective) directiveRef?: PerfectScrollbarDirective;
   public message: Message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());;
 
-  public messages: Message[] = [
-    new Message({ txt: 'Welcome i am your assitant', type: 0 }, 'assets/images/bot.png', 'bot', new Date())
-  ];
+  public messages: Message[] = [];
   public botint: boolean;
   public flow;
 
