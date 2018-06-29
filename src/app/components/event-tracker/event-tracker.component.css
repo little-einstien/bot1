@@ -1,6 +1,6 @@
 .card-content ul.stepper {
-  margin: 1em -24px;
-  padding: 0 40px ;
+  margin: 0px;
+  padding: 0px ;
 }
 
 .input-field input:focus, .input-field input[type=text]:valid, .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, .input-field input[type=url]:valid,  .input-field input[type=date]:valid {
@@ -21,11 +21,10 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 .step-content [type="radio"].with-gap:checked+span:after {
     background-color: rgb(231, 87, 122);
     border-color: rgb(231, 87, 122);
-
-
 }
-
-
+ul.stepper .step {
+   width: 100%;
+}
 ul.stepper .step.active:before, ul.stepper .step.done:before {
     background-color:rgb(231, 87, 122);
 }
