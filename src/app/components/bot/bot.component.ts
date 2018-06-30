@@ -100,7 +100,7 @@ export class BotComponent implements OnInit, AfterViewInit {
           { t: "i", ph: "What is your Age" },
           { t: 'cb', name: "sex", l: [{ label: "Male" }, { label: "Female" }] },
           { t: "i", ph: "Since When you are facing this" },
-          { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?" }] },
+          { t: 'cb', name: "s1" ,label : 'Gender', l: [{ label: "Does it itches as well ?" }] },
           { t: "ta", ph: "More Details about the allergy" },
           { t: "btn", label: 'Submit' }
         ]
@@ -112,7 +112,7 @@ export class BotComponent implements OnInit, AfterViewInit {
         title: 'Thanks, Could you share the details below further?', data: [
           { t: "i", ph: "Your good Name" },
           { t: "i", ph: "What is your age" },
-          { t: 'cb', name: "problem", l: [{ label: "Hair Loss" }, { label: "Hair Thining" }, { label: "Hair Fall" }, { label: "Dandruff" }] },
+          { t: 'cb', name: "problem", label: "What is your problem ?" , l: [{ label: "Hair Loss" }, { label: "Hair Thining" }, { label: "Hair Fall" }, { label: "Dandruff" }] },
           { t: "i", ph: "Since When you are facing this" },
           { t: "i", ph: "Do you have a family history either on paternal or maternal side ? " },
           { t: "i", ph: "Have you taken any treatment before ? " },
