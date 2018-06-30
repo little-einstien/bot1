@@ -98,9 +98,9 @@ export class BotComponent implements OnInit, AfterViewInit {
       txt = {
         title: 'Thanks, Could you share the details below further?', data: [
           { t: "i", ph: "What is your Age" },
-          { t: 'cb', name: "sex", l: [{ label: "Male" }, { label: "Female" }] },
+          { t: 'cb', name: "sex",label : 'Gender', l: [{ label: "Male" }, { label: "Female" }] },
           { t: "i", ph: "Since When you are facing this" },
-          { t: 'cb', name: "s1" ,label : 'Gender', l: [{ label: "Does it itches as well ?" }] },
+          { t: 'cb', name: "s1" , l: [{ label: "Does it itches as well ?" }] },
           { t: "ta", ph: "More Details about the allergy" },
           { t: "btn", label: 'Submit' }
         ]

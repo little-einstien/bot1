@@ -12,7 +12,7 @@
         <input placeholder="Write your answer" type="text" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
-          <div class="col s12  black-text p-l-0">
+          <div  *ngIf ="object.label" class=" black-text p-l-0">
               {{object.label}}
             </div>
         <div *ngFor="let cb of object.l " class="col s{{12/object.l.length}} m-b-8">
