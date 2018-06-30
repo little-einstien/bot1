@@ -4,10 +4,11 @@
   </div>
   <form class="col s12">
     <span *ngFor="let object of data.data" [ngSwitch]="object.t">
-      <div class="col s12  black-text">
-        {{object.ph}}
-      </div>
+
       <div class="col s12 m-b-8" *ngSwitchCase="'i'">
+        <div class="col s12  black-text">
+          {{object.ph}}
+        </div>
         <input placeholder="Write your answer" type="text" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
@@ -19,14 +20,14 @@
         </div>
       </div>
       <div class="col s12 m-b-8" *ngSwitchCase="'ta'">
-          <div class="col s12  black-text">
-              {{object.ph}}
-          </div>
+        <div class="col s12  black-text">
+          {{object.ph}}
+        </div>
         <textarea id="textarea1" placeholder="Write your answer" class="materialize-textarea"></textarea>
       </div>
       <div class="col s12" *ngSwitchCase="'btn'">
-      <a class="waves-effect waves-light btn " style = "background: rgb(231, 87, 122)">{{object.label}}</a>
-    </div>
+        <a class="waves-effect waves-light btn " style="background: rgb(231, 87, 122)">{{object.label}}</a>
+      </div>
     </span>
   </form>
 </div>
