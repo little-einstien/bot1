@@ -95,6 +95,14 @@
     <app-event-tracker [response]="message.content.step_resp"></app-event-tracker>
   </div>
 </li>
+<li *ngIf="message.content.type == 4" class="list-group-item col s12 p-10 m-b-10 {{message.type}}">
+  <img [src]="message.avatar" class="avatar col s2 m-l-0" />
+  <div class="message" >
+    <!-- <app-event-tracker [response]="message.content.step_resp"></app-event-tracker> -->
+    <app-stpper-form [response]="message.content.step_resp"></app-stpper-form>
+    
+  </div>
+</li>
 <span *ngIf="message.content.type == 0">
   <li class="list-group-item col s12 p-10 m-b-10 {{message.type}}">
     <!-- <img [src]="message.avatar" class="avatar col s2 m-l-0" />

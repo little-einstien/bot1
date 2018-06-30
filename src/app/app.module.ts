@@ -19,13 +19,16 @@ import { EventTrackerComponent } from './components/event-tracker/event-tracker.
 import { ScheduleViewerComponent } from './components/schedule-viewer/schedule-viewer.component';
 import { WindowRef } from './WindowRef';
 import { NgDatepickerModule } from 'ng2-datepicker';
+import { ParticlesModule } from 'angular-particle';
+import { StpperFormComponent } from './components/stpper-form/stpper-form.component';
+
 @NgModule({
   declarations: [
-    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent, EventTrackerComponent, ScheduleViewerComponent
+    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent, EventTrackerComponent, ScheduleViewerComponent, StpperFormComponent
 
   ],
   imports: [
-    BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, PerfectScrollbarModule,NgDatepickerModule
+    BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, PerfectScrollbarModule,NgDatepickerModule,ParticlesModule
   ],
   providers: [{
     provide: PERFECT_SCROLLBAR_CONFIG,

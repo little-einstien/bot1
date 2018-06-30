@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Message } from '../../models/message';
 import { DialogflowService } from '../../services/dialogflow.service';
@@ -92,7 +92,9 @@ export class BotComponent implements OnInit,AfterViewInit {
     let txt = this.flow.nodes[$event].label;
     let children = this.getChildren($event, this.flow.edges);
     let type = children && children.length != 0 ? 2 : 1;
-     if($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;	
+    if($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;	
+    if($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628") type = 4;	
+     
     this.messages.push(
       new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
     );
