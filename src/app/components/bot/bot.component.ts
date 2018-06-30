@@ -101,7 +101,7 @@ getResponse($event) {
     txt = {
       title: 'Thanks, Could you share the details below further?', data: [
         { t: "i", ph: "What is your age" ,value : ""},
-        { t: 'cb', name: "sex",label : 'What is your gender', l: [{ label: "Male",value : "" }, { label: "Female",value : "" }] },
+        { t: 'r', name: "sex",label : 'What is your gender', l: [{ label: "Male",value : "" }, { label: "Female",value : "" }] },
           { t: "i", ph: "Since When you are facing this",value : "" },
         { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?",value : "" }] },
         { t: "ta", ph: "More Details about the allergy" ,value : ""},

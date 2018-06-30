@@ -16,7 +16,18 @@
         </div>
         <div class="col s12 m-l-0 m-b-8">
             <label *ngFor="let cb of object.l " class=" p-r-10">
-              <input name="{{object.name}}" [(ngModel)]  = "object.l.value" type="checkbox" />
+              <input name="{{object.name}}" [(ngModel)]  = "cb.value" type="checkbox" />
+              <span>{{cb.label}}</span>
+            </label>
+          </div>
+      </div>
+      <div *ngSwitchCase="'r'">
+        <div *ngIf="object.label" class="col s12  black-text m-b-8">
+          {{object.label}}
+        </div>
+        <div class="col s12 m-l-0 m-b-8">
+            <label *ngFor="let cb of object.l " class=" p-r-10">
+              <input group = "{{object.name}}"  name="{{object.name}}" [(ngModel)]  = "cb.value" type="radio" />
               <span>{{cb.label}}</span>
             </label>
           </div>
