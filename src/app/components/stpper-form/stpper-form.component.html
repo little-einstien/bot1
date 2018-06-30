@@ -15,12 +15,12 @@
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
           {{object.label}}
         </div>
-        <div class="row">
+        <div class="row ">
           <div *ngFor="let cb of object.l " class="col s{{12/object.l.length}} m-b-8">
-            <label>
+            
               <input name="{{object.name}}" type="checkbox" />
               <span>{{cb.label}}</span>
-            </label>
+            
           </div>
         </div>
       </div>
