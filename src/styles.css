@@ -58,10 +58,6 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     float: none !important;
     margin-bottom: 10px;
 }
-
-
-@charset "UTF-8";
-
 /*!
  * animate.css -http://daneden.me/animate
  * Version - 3.6.0
@@ -3604,3 +3600,9 @@ ul.stepper .step-actions {
   height: 30px !important;
 }
 
+.m-l-0 {
+  margin-left: 0px;
+}
+.m-r-0 {
+  margin-right: 0px;
+}
