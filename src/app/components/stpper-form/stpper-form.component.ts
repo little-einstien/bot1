@@ -11,7 +11,7 @@ import { DatepickerOptions } from 'ng2-datepicker';
   styleUrls: ['./stpper-form.component.css']
 })
 export class StpperFormComponent implements OnInit {
-  @Input('data') object: any;
+  @Input('data') data: any;
 
 
   constructor(private dataHandlerService: DialogflowService, private windowRef: WindowRef) {
