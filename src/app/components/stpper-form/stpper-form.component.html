@@ -15,7 +15,7 @@
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
           {{object.label}}
         </div>
-        <div class="row m-l-0">
+        <div class="row m-l-0s">
           <div *ngFor="let cb of object.l " class="col s{{12/object.l.length}} m-b-8">
             <label>
               <input name="{{object.name}}" type="checkbox" />
@@ -30,6 +30,12 @@
         </div>
         <textarea id="textarea1" placeholder="Write your answer" class="materialize-textarea"></textarea>
       </div>
+      <div class="col s12 m-b-8" *ngSwitchCase="'l'">
+        <div class="col s12  black-text p-l-0">
+          {{object.txt}}
+        </div>
+      </div>
+
       <div class="col s12" *ngSwitchCase="'btn'">
         <a class="waves-effect waves-light btn " style="background: rgb(231, 87, 122)">{{object.label}}</a>
       </div>

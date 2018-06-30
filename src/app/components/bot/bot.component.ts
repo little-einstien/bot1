@@ -118,7 +118,8 @@ export class BotComponent implements OnInit, AfterViewInit {
           { t: "i", ph: "Have you taken any treatment before ? " },
           { t: "i", ph: "Are you on any other medications like thyroid,BP,sugar/ any supplements" },
           { t: "ta", ph: "Tell me about your life style" },
-          { t: "btn", label: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of' }
+          { t: "l", txt: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of' },
+          { t: "btn", label: 'Proceed' }
         ]
       }
     }
