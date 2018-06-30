@@ -14,14 +14,12 @@
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
           {{object.label}}
         </div>
-        <div class="row m-l-0s">
-          <div *ngFor="let cb of object.l " class="col s{{12/object.l.length}} m-b-8">
-            <label>
+        <div class="col s12 m-l-0 m-b-8">
+            <label *ngFor="let cb of object.l " class="">
               <input name="{{object.name}}" [(ngModel)]  = "object.l.value" type="checkbox" />
               <span>{{cb.label}}</span>
             </label>
           </div>
-        </div>
       </div>
       <div class="col s12 m-b-8" *ngSwitchCase="'ta'">
         <div class="col s12  black-text p-l-0">
