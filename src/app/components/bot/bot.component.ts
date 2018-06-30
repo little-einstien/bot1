@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Message } from '../../models/message';
 import { DialogflowService } from '../../services/dialogflow.service';
 import { PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
-
+import { DOCUMENT } from '@angular/platform-browser';
 @Component({
   selector: 'app-bot',
   templateUrl: './bot.component.html',
@@ -34,7 +34,7 @@ export class BotComponent implements OnInit, AfterViewInit {
   }
   public project;
 
-  constructor(private route: ActivatedRoute, private dialogflowService: DialogflowService) {
+  constructor(private route: ActivatedRoute, private dialogflowService: DialogflowService,private document:Document) {
 
   }
   ngAfterViewInit() {
@@ -172,4 +172,7 @@ export class BotComponent implements OnInit, AfterViewInit {
       //     }
     });
   }
+  goToUrl(): void {
+    this.document.location.href = 'https://stackoverflow.com';
+}
 }
