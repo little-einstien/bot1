@@ -120,6 +120,7 @@ export class BotComponent implements OnInit, AfterViewInit {
           { t: "btn", label: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of' }
         ]
       }
+    }
       this.messages.push(
         new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
       );
