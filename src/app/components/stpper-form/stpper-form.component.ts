@@ -11,7 +11,7 @@ import { DatepickerOptions } from 'ng2-datepicker';
   styleUrls: ['./stpper-form.component.css']
 })
 export class StpperFormComponent implements OnInit {
-  @Input('data') data: any = {
+  data: any = {
     title: 'Thanks, Could you share the details below further?', data: [
       { t: "i", ph: "Age" },
       { t: 'cb', name: "sex", l: [{ label: "Male" }, { label: "Female" }] },
