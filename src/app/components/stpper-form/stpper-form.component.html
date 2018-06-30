@@ -3,12 +3,12 @@
     {{data.title}}
   </div>
   <form class="col s12">
-    <span *ngFor="object of data.data" [ngSwitch]="object.t">
+    <span *ngFor="let object of data.data" [ngSwitch]="object.t">
       <div class="col s12 m-b-8" *ngSwitchCase="'i'">
         <input placeholder="{{object.ph}}" type="text" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
-        <div *ngFor="cb of object.l " class="col s6 m-b-8">
+        <div *ngFor="let cb of object.l " class="col s6 m-b-8">
           <label>
             <input name="{{object.name}}" type="checkbox" />
             <span>{{cb.label}}</span>
