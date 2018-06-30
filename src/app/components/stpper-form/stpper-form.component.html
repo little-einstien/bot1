@@ -1,37 +1,26 @@
 <div class="row m-l-0 m-r-0">
   <div class="col s12 m-b-8 black-text">
-    Thanks, Could you share the details below further?
+    {{data.title}}
   </div>
   <form class="col s12">
-    <div class="col s12 m-b-8">
-      <input placeholder="Age" id="icon_prefix" type="text" class="validate">
-    </div>
-    <div class="col s6 m-b-8">
-      <label>
-        <input name="sex" type="checkbox" />
-        <span>Male</span>
-      </label>
-    </div>
-    <div class="col s6 m-b-8">
-      <label>
-        <input type="checkbox" name="sex" />
-        <span>Female</span>
-      </label>
-    </div>
-    <div class="col s12 m-b-8">
-      <input placeholder="Since when you are facing " type="text" class="validate">
-    </div>
-    <div class="switch col s12 m-b-8">
-      <label>
-        <input type="checkbox" />
-        <span>Does it itches as well ?</span>
-      </label>
-    </div>
-    <div class="col s12 m-b-8">
-      <textarea id="textarea1" placeholder="More details about the allergy" class="materialize-textarea"></textarea>
-    </div>
-    <div class="col s12">
+    <span *ngFor="object of data.data" [ngSwitch]="object.t">
+      <div class="col s12 m-b-8" *ngSwitchCase="'i'">
+        <input placeholder="{{object.ph}}" type="text" class="validate">
+      </div>
+      <div *ngSwitchCase="'cb'">
+        <div *ngFor="cb of object.l " class="col s{{l.lenght/12}} m-b-8">
+          <label>
+            <input name="{{object.name}}" type="checkbox" />
+            <span>{{cb.label}}</span>
+          </label>
+        </div>
+      </div>
+      <div class="col s12 m-b-8" *ngSwitchCase="'ta'">
+        <textarea id="textarea1" placeholder="{{object.ph}}" class="materialize-textarea"></textarea>
+      </div>
+      <!-- <div class="col s12">
       <a class="waves-effect waves-light btn " style = "background: rgb(231, 87, 122)">Submit</a>
-    </div>
+    </div> -->
+    </span>
   </form>
 </div>

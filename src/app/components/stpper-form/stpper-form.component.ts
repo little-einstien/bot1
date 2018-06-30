@@ -11,25 +11,35 @@ import { DatepickerOptions } from 'ng2-datepicker';
   styleUrls: ['./stpper-form.component.css']
 })
 export class StpperFormComponent implements OnInit {
-  @Input('data') data:any ;
-    constructor(private dataHandlerService: DialogflowService,private windowRef : WindowRef) {
+  @Input('data') data: any = {
+    title: 'Thanks, Could you share the details below further?', data: [
+      { t: "i", ph: "Age" },
+      { t: 'cb', name: "sex", l: [{ label: "Male" }, { label: "Female" }] },
+      { t: "i", ph: "Since When you are facing this" },
+      { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?" }] },
+      { t: "ta", ph: "More Details about the allergy" },
+    ]
+  };
+
+
+  constructor(private dataHandlerService: DialogflowService, private windowRef: WindowRef) {
     setTimeout(() => {
       M.Datepicker.init(document.querySelectorAll('.datepicker'), {});
       M.Timepicker.init(document.querySelectorAll('.timepicker'), {});
     }, 1000);
-  } 
+  }
 
   ngOnInit() {
     var elem = document.querySelector('.collapsible.expandable');
     var instance = M.Collapsible.init(elem, {
       accordion: false
     });
-    setTimeout(()=> {this.windowRef.nativeWindow.initStepper();console.log(this)},1000)
+    setTimeout(() => { this.windowRef.nativeWindow.initStepper(); console.log(this) }, 1000)
 
   }
   saveEvent() {
-    
-    
+
+
   }
 
 }
