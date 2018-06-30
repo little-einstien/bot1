@@ -107,6 +107,7 @@ export class BotComponent implements OnInit, AfterViewInit {
       }
     }
     if ($event == "1433143d-7ecd-4d99-8b55-a43833f35ea6") {
+      type = 4
       txt = {
         title: 'Thanks, Could you share the details below further?', data: [
           { t: "i", ph: "Your good Name" },
