@@ -8,7 +8,7 @@
         <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
-        <input placeholder="Write your answer" type="text" [(ngModel)]  = "object.value" class="validate">
+        <input placeholder="Write your answer" name = "{{object.ph}}" type="text" [(ngModel)]  = "object.value" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
@@ -27,7 +27,7 @@
         <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
-        <textarea id="textarea1" [(ngModel)]  = "object.value" placeholder="Write your answer" class="materialize-textarea"></textarea>
+        <textarea name="textarea1" [(ngModel)]  = "object.value" placeholder="Write your answer" class="materialize-textarea"></textarea>
       </div>
       <div class="col s12 m-b-8" *ngSwitchCase="'l'">
         <div class="col s12  black-text p-l-0">
