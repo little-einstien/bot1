@@ -100,7 +100,7 @@
   <div class="message" >
 
     <!-- <app-event-tracker [response]="message.content.step_resp"></app-event-tracker> -->
-    <app-stpper-form  *ngFor = "let object of message.content.txt" [data]="object"></app-stpper-form>
+    <app-stpper-form  *ngFor = "let object of message.content.txt.data" [data]="object"></app-stpper-form>
     
   </div>
 </li>
