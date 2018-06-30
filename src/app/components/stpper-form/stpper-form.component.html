@@ -8,7 +8,7 @@
         <input placeholder="{{object.ph}}" type="text" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
-        <div *ngFor="let cb of object.l " class="col s6 m-b-8">
+        <div *ngFor="let cb of object.l " class="col s{{12/l.length}} m-b-8">
           <label>
             <input name="{{object.name}}" type="checkbox" />
             <span>{{cb.label}}</span>
