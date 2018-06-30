@@ -6,7 +6,7 @@
     <span *ngFor="let object of data.data" [ngSwitch]="object.t">
 
       <div class="col s12 m-b-8" *ngSwitchCase="'i'">
-        <div class="col s12  black-text">
+        <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
         <input placeholder="Write your answer" type="text" class="validate">
@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="col s12 m-b-8" *ngSwitchCase="'ta'">
-        <div class="col s12  black-text">
+        <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
         <textarea id="textarea1" placeholder="Write your answer" class="materialize-textarea"></textarea>
