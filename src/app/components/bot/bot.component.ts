@@ -93,8 +93,18 @@ export class BotComponent implements OnInit,AfterViewInit {
     let children = this.getChildren($event, this.flow.edges);
     let type = children && children.length != 0 ? 2 : 1;
     if($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;	
-    if($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628") type = 4;	
-     
+    if($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628"){ 
+      type = 4
+      txt = {
+        title: 'Thanks, Could you share the details below further?', data: [
+          { t: "i", ph: "Age" },
+          { t: 'cb', name: "sex", l: [{ label: "Male" }, { label: "Female" }] },
+          { t: "i", ph: "Since When you are facing this" },
+          { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?" }] },
+          { t: "ta", ph: "More Details about the allergy" },
+        ]
+      }
+    };	
     this.messages.push(
       new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
     );
