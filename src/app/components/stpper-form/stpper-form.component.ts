@@ -1,16 +1,15 @@
-import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import * as M from 'materialize-css';
-import * as _ from 'lodash';
 // import * as $ from 'jquery';
 import { DialogflowService } from '../../services/dialogflow.service';
 import { WindowRef } from '../../WindowRef';
-import { DatepickerOptions } from 'ng2-datepicker';
 @Component({
   selector: 'app-stpper-form',
   templateUrl: './stpper-form.component.html',
   styleUrls: ['./stpper-form.component.css']
 })
 export class StpperFormComponent implements OnInit {
+  @Output() responseClick: EventEmitter<any> = new EventEmitter();
   @Input('data') data: any;
   public formData = [];
 
@@ -31,6 +30,7 @@ export class StpperFormComponent implements OnInit {
   }
   saveData(){
     console.log(this.data);
+    this.responseClick.emit('form');
   }
 
 }

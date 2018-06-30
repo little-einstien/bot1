@@ -92,6 +92,12 @@ getChildren(parent, data) {
   return to;
 }
 getResponse($event) {
+  if($event  == 'form'){
+    this.messages.push(
+      new Message({ txt: 'Thank you for filling the form', type: 0}, 'assets/images/bot.png', 'bot', new Date())
+    );
+  }
+
   let txt = this.flow.nodes[$event].label;
   let children = this.getChildren($event, this.flow.edges);
   let type = children && children.length != 0 ? 2 : 1;
