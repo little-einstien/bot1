@@ -3,7 +3,7 @@
     {{data.title}}
   </div>
   <form class="col s12">
-    <span [ngSwitch]="object.t">
+    <span *ngFor="let object of data.data" [ngSwitch]="object.t">
 
       <div class="col s12 m-b-8" *ngSwitchCase="'i'">
         <div class="col s12  black-text p-l-0">
