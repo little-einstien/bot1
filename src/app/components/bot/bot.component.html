@@ -1,8 +1,9 @@
 <div class="chatform chat wrapper white-text">
 
 	<div class="header" >
-		<img src="assets/images/powered-icon.png" border="0" alt="" title="" />
-		AI Life BOT
+		<a href="http://ailifebot.com"><img src="assets/images/powered-icon.png" border="0" alt="" title="" />
+    AI BOT
+    </a>>
 	</div>
   <div class="chatlist" #chatlist >
       <perfect-scrollbar #scrollRef style="height: calc(100vh - 132px);" [config]="config">
@@ -12,3 +13,4 @@
   </div>
   <message-form [scroll]  = "scrollRef" [message]="message" id="message--writer-wrapper" [messages]="messages" class="bottom col s12 " [props]="props"></message-form>
 </div>
+
