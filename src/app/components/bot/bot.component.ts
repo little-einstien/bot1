@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Inject } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Message } from '../../models/message';
 import { DialogflowService } from '../../services/dialogflow.service';
@@ -34,7 +34,8 @@ export class BotComponent implements OnInit, AfterViewInit {
   }
   public project;
 
-  constructor(private route: ActivatedRoute, private dialogflowService: DialogflowService,private document:Document) {
+  constructor(private route: ActivatedRoute, private dialogflowService: DialogflowService,
+    @Inject(DOCUMENT) document:Document) {
 
   }
   ngAfterViewInit() {
