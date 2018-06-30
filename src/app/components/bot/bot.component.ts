@@ -102,6 +102,7 @@ export class BotComponent implements OnInit,AfterViewInit {
           { t: "i", ph: "Since When you are facing this" },
           { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?" }] },
           { t: "ta", ph: "More Details about the allergy" },
+          { t: "btn", label:'Submit' }
         ]
       }
     };	

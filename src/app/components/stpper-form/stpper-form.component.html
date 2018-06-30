@@ -18,9 +18,9 @@
       <div class="col s12 m-b-8" *ngSwitchCase="'ta'">
         <textarea id="textarea1" placeholder="{{object.ph}}" class="materialize-textarea"></textarea>
       </div>
-      <!-- <div class="col s12">
-      <a class="waves-effect waves-light btn " style = "background: rgb(231, 87, 122)">Submit</a>
-    </div> -->
+      <div class="col s12" *ngSwitchCase="'btn'">
+      <a class="waves-effect waves-light btn " style = "background: rgb(231, 87, 122)">{{object.lebel}}</a>
+    </div>
     </span>
   </form>
 </div>
