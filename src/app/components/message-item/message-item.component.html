@@ -99,7 +99,7 @@
   <img [src]="message.avatar" class="avatar col s2 m-l-0" />
   <div class="message" >
     <!-- <app-event-tracker [response]="message.content.step_resp"></app-event-tracker> -->
-    <app-stpper-form [data]="message.content.txt"></app-stpper-form>
+    <app-stpper-form (responseClick)="getResponse($event)" [data]="message.content.txt"></app-stpper-form>
     
   </div>
 </li>
