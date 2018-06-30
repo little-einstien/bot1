@@ -1,6 +1,7 @@
 .card-content ul.stepper {
   margin: 1em -24px;
   padding: 0 40px ;
+  min-height: 400px;
 }
 
 .input-field input:focus, .input-field input[type=text]:valid, .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, .input-field input[type=url]:valid,  .input-field input[type=date]:valid {
