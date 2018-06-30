@@ -12,7 +12,7 @@ import { DatepickerOptions } from 'ng2-datepicker';
 })
 export class StpperFormComponent implements OnInit {
   @Input('data') data: any;
-
+  public formData = [];
 
   constructor(private dataHandlerService: DialogflowService, private windowRef: WindowRef) {
     setTimeout(() => {
@@ -29,9 +29,8 @@ export class StpperFormComponent implements OnInit {
     setTimeout(() => { this.windowRef.nativeWindow.initStepper(); console.log(this) }, 1000)
 
   }
-  saveEvent() {
-
-
+  saveData(){
+    console.log(this.data);
   }
 
 }

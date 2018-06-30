@@ -100,11 +100,11 @@ getResponse($event) {
     type = 4
     txt = {
       title: 'Thanks, Could you share the details below further?', data: [
-        { t: "i", ph: "What is your age" },
-        { t: 'cb', name: "sex",label : 'What is your gender', l: [{ label: "Male" }, { label: "Female" }] },
-          { t: "i", ph: "Since When you are facing this" },
-        { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?" }] },
-        { t: "ta", ph: "More Details about the allergy" },
+        { t: "i", ph: "What is your age" ,value : ""},
+        { t: 'cb', name: "sex",label : 'What is your gender', l: [{ label: "Male",value : "" }, { label: "Female",value : "" }] },
+          { t: "i", ph: "Since When you are facing this",value : "" },
+        { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?",value : "" }] },
+        { t: "ta", ph: "More Details about the allergy" ,value : ""},
         { t: "btn", label: 'Submit' }
       ]
     }
@@ -113,15 +113,15 @@ getResponse($event) {
     type = 4
     txt = {
       title: 'Thanks, Could you share the details below further?', data: [
-        { t: "i", ph: "Your good Name" },
-        { t: "i", ph: "What is your age" },
-        { t: 'cb', name: "problem", label: "What is your problem ?", l: [{ label: "Hair Loss" }, { label: "Hair Thining" }, { label: "Hair Fall" }, { label: "Dandruff" }] },
-        { t: "i", ph: "Since When you are facing this" },
-        { t: "i", ph: "Do you have a family history either on paternal or maternal side ? " },
-        { t: "i", ph: "Have you taken any treatment before ? " },
-        { t: "i", ph: "Are you on any other medications like thyroid,BP,sugar/ any supplements" },
-        { t: "ta", ph: "Tell me about your life style" },
-        { t: "l", txt: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of' },
+        { t: "i", ph: "Your good Name",value : "" },
+        { t: "i", ph: "What is your age",value : "" },
+        { t: 'cb', name: "problem", label: "What is your problem ?", l: [{ label: "Hair Loss",value : "" }, { label: "Hair Thining",value : "" }, { label: "Hair Fall",value : "" }, { label: "Dandruff",value : "" }] },
+        { t: "i", ph: "Since When you are facing this",value : "" },
+        { t: "i", ph: "Do you have a family history either on paternal or maternal side ? " ,value : "" },
+        { t: "i", ph: "Have you taken any treatment before ? ",value : "" },
+        { t: "i", ph: "Are you on any other medications like thyroid,BP,sugar/ any supplements",value : "" },
+        { t: "ta", ph: "Tell me about your life style",value : "" },
+        { t: "l", txt: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of',value : "" },
         { t: "btn", label: 'Proceed' }
       ]
     }

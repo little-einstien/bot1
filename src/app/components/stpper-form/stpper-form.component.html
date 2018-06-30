@@ -4,12 +4,11 @@
   </div>
   <form class="col s12">
     <span *ngFor="let object of data.data" [ngSwitch]="object.t">
-
       <div class="col s12 m-b-8" *ngSwitchCase="'i'">
         <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
-        <input placeholder="Write your answer" type="text" class="validate">
+        <input placeholder="Write your answer" type="text" [(ngModel)]  = "object.value" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
@@ -18,7 +17,7 @@
         <div class="row m-l-0s">
           <div *ngFor="let cb of object.l " class="col s{{12/object.l.length}} m-b-8">
             <label>
-              <input name="{{object.name}}" type="checkbox" />
+              <input name="{{object.name}}" [(ngModel)]  = "object.l.value" type="checkbox" />
               <span>{{cb.label}}</span>
             </label>
           </div>
@@ -28,7 +27,7 @@
         <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
-        <textarea id="textarea1" placeholder="Write your answer" class="materialize-textarea"></textarea>
+        <textarea id="textarea1" [(ngModel)]  = "object.value" placeholder="Write your answer" class="materialize-textarea"></textarea>
       </div>
       <div class="col s12 m-b-8" *ngSwitchCase="'l'">
         <div class="col s12  black-text p-l-0">
@@ -37,7 +36,7 @@
       </div>
 
       <div class="col s12" *ngSwitchCase="'btn'">
-        <a class="waves-effect waves-light btn " style="background: rgb(231, 87, 122)">{{object.label}}</a>
+        <a class="waves-effect waves-light btn " (click) = "saveData()" style="background: rgb(231, 87, 122)">{{object.label}}</a>
       </div>
     </span>
   </form>
