@@ -4,6 +4,7 @@ import { Message } from '../../models/message';
 import { DialogflowService } from '../../services/dialogflow.service';
 import { PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 import { DOCUMENT } from '@angular/platform-browser';
+import { WindowRef } from '../../WindowRef';
 @Component({
   selector: 'app-bot',
   templateUrl: './bot.component.html',
@@ -34,146 +35,147 @@ export class BotComponent implements OnInit, AfterViewInit {
   }
   public project;
 
-  constructor(private route: ActivatedRoute, private dialogflowService: DialogflowService,
-    @Inject(DOCUMENT) document:Document) {
+  constructor(private route: ActivatedRoute,
+    private dialogflowService: DialogflowService,
+    private windowRef: WindowRef) {
 
-  }
-  ngAfterViewInit() {
-    this.route.params.subscribe(params => {
-      console.log(params);
-      if (params.project) {
-        this.dialogflowService.project = params.project;
+}
+ngAfterViewInit() {
+  this.route.params.subscribe(params => {
+    console.log(params);
+    if (params.project) {
+      this.dialogflowService.project = params.project;
 
-        this.wetherMessage().then(() => {
-          this.dialogflowService.getProjectDetails(params.project).then((proj) => {
-            this.project = proj;
-            this.props.bg_clr = proj['bg_clr'];
-            this.props.h_clr = proj['h_clr'];
-            this.props.ucb_clr = proj['ucb_clr'];
-            this.props.bcb_clr = proj['bcb_clr'];
-            this.props.header = proj['header'];
-            this.dialogflowService.getFlow(params.project).then((flow) => {
-              this.flow = flow['flow'];
-              if (flow['sp']) {
-                let startingNode = flow['sp'];
-                this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
-                setTimeout(() => {
-                  this.messages.push(
-                    new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
-                  );
-                }, 1000);
-              }
-            }).catch((err) => {
-              console.log(err);
-            });
+      this.wetherMessage().then(() => {
+        this.dialogflowService.getProjectDetails(params.project).then((proj) => {
+          this.project = proj;
+          this.props.bg_clr = proj['bg_clr'];
+          this.props.h_clr = proj['h_clr'];
+          this.props.ucb_clr = proj['ucb_clr'];
+          this.props.bcb_clr = proj['bcb_clr'];
+          this.props.header = proj['header'];
+          this.dialogflowService.getFlow(params.project).then((flow) => {
+            this.flow = flow['flow'];
+            if (flow['sp']) {
+              let startingNode = flow['sp'];
+              this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
+              setTimeout(() => {
+                this.messages.push(
+                  new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
+                );
+              }, 1000);
+            }
+          }).catch((err) => {
+            console.log(err);
           });
         });
-      }
-    });
-  }
-  close() {
-    window.parent.postMessage('message', '*');
-  }
+      });
+    }
+  });
+}
+close() {
+  window.parent.postMessage('message', '*');
+}
 
-  getChildren(parent, data) {
-    let to = [];
-    for (let _i = 0; _i < data.length; _i++) {
-      if (data[_i].from == parent) {
-        to.push({
-          id: data[_i].to, txt: this.flow.nodes[data[_i].to].as_btn ? this.flow.nodes[data[_i].to].btn_txt : this.flow.nodes[data[_i].to].label,
-          txt_color: this.flow.nodes[data[_i].to].txt_color,
-          color: this.flow.nodes[data[_i].to].color,
-          as_btn: this.flow.nodes[data[_i].to].as_btn
-        });
-      }
+getChildren(parent, data) {
+  let to = [];
+  for (let _i = 0; _i < data.length; _i++) {
+    if (data[_i].from == parent) {
+      to.push({
+        id: data[_i].to, txt: this.flow.nodes[data[_i].to].as_btn ? this.flow.nodes[data[_i].to].btn_txt : this.flow.nodes[data[_i].to].label,
+        txt_color: this.flow.nodes[data[_i].to].txt_color,
+        color: this.flow.nodes[data[_i].to].color,
+        as_btn: this.flow.nodes[data[_i].to].as_btn
+      });
     }
-    return to;
   }
-  getResponse($event) {
-    let txt = this.flow.nodes[$event].label;
-    let children = this.getChildren($event, this.flow.edges);
-    let type = children && children.length != 0 ? 2 : 1;
-    if ($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;
-    if ($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628") {
-      type = 4
-      txt = {
-        title: 'Thanks, Could you share the details below further?', data: [
-          { t: "i", ph: "What is your age" },
-          { t: 'cb', name: "sex",label : 'What is your gender', l: [{ label: "Male" }, { label: "Female" }] },
+  return to;
+}
+getResponse($event) {
+  let txt = this.flow.nodes[$event].label;
+  let children = this.getChildren($event, this.flow.edges);
+  let type = children && children.length != 0 ? 2 : 1;
+  if ($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;
+  if ($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628") {
+    type = 4
+    txt = {
+      title: 'Thanks, Could you share the details below further?', data: [
+        { t: "i", ph: "What is your age" },
+        { t: 'cb', name: "sex",label : 'What is your gender', l: [{ label: "Male" }, { label: "Female" }] },
           { t: "i", ph: "Since When you are facing this" },
-          { t: 'cb', name: "s1" , l: [{ label: "Does it itches as well ?" }] },
-          { t: "ta", ph: "More Details about the allergy" },
-          { t: "btn", label: 'Submit' }
-        ]
-      }
+        { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?" }] },
+        { t: "ta", ph: "More Details about the allergy" },
+        { t: "btn", label: 'Submit' }
+      ]
     }
-    if ($event == "1433143d-7ecd-4d99-8b55-a43833f35ea6") {
-      type = 4
-      txt = {
-        title: 'Thanks, Could you share the details below further?', data: [
-          { t: "i", ph: "Your good Name" },
-          { t: "i", ph: "What is your age" },
-          { t: 'cb', name: "problem", label: "What is your problem ?" , l: [{ label: "Hair Loss" }, { label: "Hair Thining" }, { label: "Hair Fall" }, { label: "Dandruff" }] },
-          { t: "i", ph: "Since When you are facing this" },
-          { t: "i", ph: "Do you have a family history either on paternal or maternal side ? " },
-          { t: "i", ph: "Have you taken any treatment before ? " },
-          { t: "i", ph: "Are you on any other medications like thyroid,BP,sugar/ any supplements" },
-          { t: "ta", ph: "Tell me about your life style" },
-          { t: "l", txt: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of' },
-          { t: "btn", label: 'Proceed' }
-        ]
-      }
+  }
+  if ($event == "1433143d-7ecd-4d99-8b55-a43833f35ea6") {
+    type = 4
+    txt = {
+      title: 'Thanks, Could you share the details below further?', data: [
+        { t: "i", ph: "Your good Name" },
+        { t: "i", ph: "What is your age" },
+        { t: 'cb', name: "problem", label: "What is your problem ?", l: [{ label: "Hair Loss" }, { label: "Hair Thining" }, { label: "Hair Fall" }, { label: "Dandruff" }] },
+        { t: "i", ph: "Since When you are facing this" },
+        { t: "i", ph: "Do you have a family history either on paternal or maternal side ? " },
+        { t: "i", ph: "Have you taken any treatment before ? " },
+        { t: "i", ph: "Are you on any other medications like thyroid,BP,sugar/ any supplements" },
+        { t: "ta", ph: "Tell me about your life style" },
+        { t: "l", txt: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of' },
+        { t: "btn", label: 'Proceed' }
+      ]
     }
-      this.messages.push(
-        new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
-      );
-      console.log($event);
-      setTimeout(() => { this.scrollToBottom() }, 250);
-    }
+  }
+  this.messages.push(
+    new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
+  );
+  console.log($event);
+  setTimeout(() => { this.scrollToBottom() }, 250);
+}
   public scrollToBottom(): void {
-    if (this.type === 'directive' && this.directiveRef) {
-      this.directiveRef.scrollToBottom();
-    } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
-      this.componentRef.directiveRef.scrollToBottom();
-    }
+  if(this.type === 'directive' && this.directiveRef) {
+  this.directiveRef.scrollToBottom();
+} else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
+  this.componentRef.directiveRef.scrollToBottom();
+}
   }
-  wetherMessage() {
-    return new Promise((resolve, reject) => {
-      this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
-        setTimeout(() => {
-          this.messages.push(new Message({
-            txt: `
+wetherMessage() {
+  return new Promise((resolve, reject) => {
+    this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
+      setTimeout(() => {
+        this.messages.push(new Message({
+          txt: `
           <p>Hey todays temperature in ${data.data.name}  is <b>${data.data.main.temp - 273.15} <sup >C</sup></b>
           please take care of your Head and Skin as it is ${data.data.weather[0].description} outside</p>
           `, type: 0
-          }, 'assets/images/bot.png', 'bot', new Date()))
-          console.log(data.data.name)
-        }, 500)
-        resolve();
-      })
+        }, 'assets/images/bot.png', 'bot', new Date()))
+        console.log(data.data.name)
+      }, 500)
+      resolve();
+    })
 
-      //     if (navigator.geolocation) {
-      //       navigator.geolocation.getCurrentPosition((position) => {
-      //         let lat = position.coords.latitude;
-      //         let lon = position.coords.longitude;
-      //         this.dialogflowService.getTemprature(lat, lon).then((data: any) => {
-      //           this.messages.push(new Message({
-      //             txt: `
-      //           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
-      //           <h5>please take care of your head and skin as it is ${data.data.weather[0].description} outside</h5>
-      //           `, type: 0
-      //           }, 'assets/images/bot.png', 'bot', new Date()))
-      //           console.log(data.data.name)
-      //         })
-      //       }, (err) => {
-      //         console.log(err);
-      //       });
-      //     } else {
-      //       alert("Geolocation is not supported by this browser.");
-      //     }
-    });
-  }
-  goToUrl(): void {
-    this.document.location.href = 'https://stackoverflow.com';
+    //     if (navigator.geolocation) {
+    //       navigator.geolocation.getCurrentPosition((position) => {
+    //         let lat = position.coords.latitude;
+    //         let lon = position.coords.longitude;
+    //         this.dialogflowService.getTemprature(lat, lon).then((data: any) => {
+    //           this.messages.push(new Message({
+    //             txt: `
+    //           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
+    //           <h5>please take care of your head and skin as it is ${data.data.weather[0].description} outside</h5>
+    //           `, type: 0
+    //           }, 'assets/images/bot.png', 'bot', new Date()))
+    //           console.log(data.data.name)
+    //         })
+    //       }, (err) => {
+    //         console.log(err);
+    //       });
+    //     } else {
+    //       alert("Geolocation is not supported by this browser.");
+    //     }
+  });
+}
+goToUrl(): void {
+  this.windowRef.nativeWindow.top.location.href = 'http://ailifebot.com';
 }
 }
