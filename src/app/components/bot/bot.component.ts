@@ -9,7 +9,7 @@ import { PerfectScrollbarComponent, PerfectScrollbarDirective } from 'ngx-perfec
   templateUrl: './bot.component.html',
   styleUrls: ['./bot.component.css']
 })
-export class BotComponent implements OnInit,AfterViewInit {
+export class BotComponent implements OnInit, AfterViewInit {
 
   @ViewChild(PerfectScrollbarComponent) componentRef?: PerfectScrollbarComponent;
   public type: string = 'component';
@@ -33,16 +33,16 @@ export class BotComponent implements OnInit,AfterViewInit {
 
   }
   public project;
-  
+
   constructor(private route: ActivatedRoute, private dialogflowService: DialogflowService) {
-   
+
   }
-  ngAfterViewInit(){
-     this.route.params.subscribe(params => {
+  ngAfterViewInit() {
+    this.route.params.subscribe(params => {
       console.log(params);
       if (params.project) {
         this.dialogflowService.project = params.project;
-        
+
         this.wetherMessage().then(() => {
           this.dialogflowService.getProjectDetails(params.project).then((proj) => {
             this.project = proj;
@@ -57,10 +57,10 @@ export class BotComponent implements OnInit,AfterViewInit {
                 let startingNode = flow['sp'];
                 this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
                 setTimeout(() => {
-                this.messages.push(
-                  new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
-                );
-                },1000);
+                  this.messages.push(
+                    new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
+                  );
+                }, 1000);
               }
             }).catch((err) => {
               console.log(err);
@@ -92,8 +92,8 @@ export class BotComponent implements OnInit,AfterViewInit {
     let txt = this.flow.nodes[$event].label;
     let children = this.getChildren($event, this.flow.edges);
     let type = children && children.length != 0 ? 2 : 1;
-    if($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;	
-    if($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628"){ 
+    if ($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;
+    if ($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628") {
       type = 4
       txt = {
         title: 'Thanks, Could you share the details below further?', data: [
@@ -101,27 +101,41 @@ export class BotComponent implements OnInit,AfterViewInit {
           { t: 'cb', name: "sex", l: [{ label: "Male" }, { label: "Female" }] },
           { t: "i", ph: "Since When you are facing this" },
           { t: 'cb', name: "s1", l: [{ label: "Does it itches as well ?" }] },
-          { t: "ta", ph: "More Details about the allergy" },
-          { t: "btn", label:'Submit' }
+          { t: "ta", ph: "More Details   about the allergy" },
+          { t: "btn", label: 'Submit' }
         ]
       }
-    };	
-    this.messages.push(
-      new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
-    );
-    console.log($event);
-    setTimeout(() => { this.scrollToBottom() }, 250);
-  }
+    }
+    if ($event == "1433143d-7ecd-4d99-8b55-a43833f35ea6") {
+      txt = {
+        title: 'Thanks, Could you share the details below further?', data: [
+          { t: "i", ph: "Your good Name" },
+          { t: "i", ph: "Your good Age" },
+          { t: 'cb', name: "problem", l: [{ label: "Hair Loss" }, { label: "Hair Thining" }, { label: "Hair Fall" }, { label: "Dandruff" }] },
+          { t: "i", ph: "Since When you are facing this" },
+          { t: "i", ph: "Do you have a family history either on paternal or maternal side ? " },
+          { t: "i", ph: "Have you taken any treatment before ? " },
+          { t: "i", ph: "Are you on any other medications like thyroid,BP,sugar/ any supplements" },
+          { t: "ta", ph: "Tell me about your life style" },
+          { t: "btn", label: 'Your doctor will like to analyse your scalp,kind of hair loss , dandruff etc along with few blood tests wwill be advise of' }
+        ]
+      }
+      this.messages.push(
+        new Message({ txt: txt, type: type, children: children }, 'assets/images/bot.png', 'bot', new Date())
+      );
+      console.log($event);
+      setTimeout(() => { this.scrollToBottom() }, 250);
+    }
   public scrollToBottom(): void {
     if (this.type === 'directive' && this.directiveRef) {
       this.directiveRef.scrollToBottom();
-    }  else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
+    } else if (this.type === 'component' && this.componentRef && this.componentRef.directiveRef) {
       this.componentRef.directiveRef.scrollToBottom();
     }
   }
   wetherMessage() {
-    return new Promise((resolve,reject) => {
-    this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
+    return new Promise((resolve, reject) => {
+      this.dialogflowService.getTemprature(-1, -1).then((data: any) => {
         setTimeout(() => {
           this.messages.push(new Message({
             txt: `
@@ -130,29 +144,29 @@ export class BotComponent implements OnInit,AfterViewInit {
           `, type: 0
           }, 'assets/images/bot.png', 'bot', new Date()))
           console.log(data.data.name)
-          },500)
+        }, 500)
         resolve();
-        })
-      
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition((position) => {
-//         let lat = position.coords.latitude;
-//         let lon = position.coords.longitude;
-//         this.dialogflowService.getTemprature(lat, lon).then((data: any) => {
-//           this.messages.push(new Message({
-//             txt: `
-//           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
-//           <h5>please take care of your head and skin as it is ${data.data.weather[0].description} outside</h5>
-//           `, type: 0
-//           }, 'assets/images/bot.png', 'bot', new Date()))
-//           console.log(data.data.name)
-//         })
-//       }, (err) => {
-//         console.log(err);
-//       });
-//     } else {
-//       alert("Geolocation is not supported by this browser.");
-//     }
+      })
+
+      //     if (navigator.geolocation) {
+      //       navigator.geolocation.getCurrentPosition((position) => {
+      //         let lat = position.coords.latitude;
+      //         let lon = position.coords.longitude;
+      //         this.dialogflowService.getTemprature(lat, lon).then((data: any) => {
+      //           this.messages.push(new Message({
+      //             txt: `
+      //           <h4>Hey todays temperature in ${data.data.name} is ${data.data.main.temp - 273.15} </h4>
+      //           <h5>please take care of your head and skin as it is ${data.data.weather[0].description} outside</h5>
+      //           `, type: 0
+      //           }, 'assets/images/bot.png', 'bot', new Date()))
+      //           console.log(data.data.name)
+      //         })
+      //       }, (err) => {
+      //         console.log(err);
+      //       });
+      //     } else {
+      //       alert("Geolocation is not supported by this browser.");
+      //     }
     });
   }
 }
