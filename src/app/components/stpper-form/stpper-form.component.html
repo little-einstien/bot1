@@ -8,7 +8,7 @@
         <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
-        <input required placeholder="Write your answer" name = "{{object.ph}}" type="text" [(ngModel)]  = "object.value" class="validate">
+        <input required data-error="its a required field" data-success="" placeholder="Write your answer" name = "{{object.ph}}" type="text" [(ngModel)]  = "object.value" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
