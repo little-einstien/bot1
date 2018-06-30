@@ -4,7 +4,8 @@
 }
 
 .input-field input:focus, .input-field input[type=text]:valid, .input-field input[type=password]:valid, nav .input-field input[type=email]:valid, .input-field input[type=url]:valid,  .input-field input[type=date]:valid {
-  border: 1px solid rgba(0,0,0,.3);
+  border: 0px;
+  border-bottom: 1px solid rgba(0,0,0,.3);
   padding: 0px 10px;
 }
 
@@ -28,4 +29,4 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
 
 ul.stepper .step.active:before, ul.stepper .step.done:before {
     background-color:rgb(231, 87, 122);
-}
+  }
