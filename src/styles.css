@@ -3600,7 +3600,6 @@ ul.stepper .step-actions {
   height: 30px !important;
 }
 .dr-bot-btn, .dr-bot-btn:hover, .dr-bot-btn:focus {
-  margin-left: 35%;
   background: rgb(231, 87, 122);
   margin-top: 35px;
   margin-bottom: 0px;
