@@ -13,6 +13,10 @@ import * as frLocale from 'date-fns/locale/fr';
 })
 export class EventTrackerComponent implements OnInit {
   data:any[] = [];
+  
+  public mslots;
+  public eslots;
+  public selectedSlot;
   public event = {st:'',et:'',title:'',remarks:'',pid:'',ap_with: "Arnav",details:[],
   "user": { "id": "ww", "name": "gdfgd" }};
   public name;
@@ -84,9 +88,6 @@ export class EventTrackerComponent implements OnInit {
       "user": { "id": "ww", "name": this.name,"mobile":this.mobile,"email":this.email }
     });
   }
-  public mslots;
-  public eslots;
-  public selectedSlot;
   getSlots() {
     console.log(this.st)
     this.dataHandlerService.getSlotsDatewise('arnav', this.st.getTime()).then((slots:any) => {
