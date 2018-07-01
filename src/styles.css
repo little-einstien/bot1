@@ -3620,6 +3620,8 @@ ul.stepper .step-actions {
   padding-right: 10px !important;
   }
 .p-t-10{
+
+
   padding-top: 10px !important;
 }
 
@@ -3631,4 +3633,7 @@ ul.stepper .step-actions {
 }
 .m-b-0{
   margin-bottom: 0px;
+}
+.dr-color{
+  background: rgb(231, 87, 122);
 }

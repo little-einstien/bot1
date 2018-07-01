@@ -19,7 +19,7 @@
           </div>
         <br />
         <div class='row m-b-20'>
-          <button (click) = "register()" type='button' name='btn_login' class='col s12 dr-bot-btn btn btn-large waves-effect m-t-0'>Login</button>
+          <button [disabled] = "validate()" (click) = "register()" type='button' name='btn_login' class='col s12 dr-color btn btn-large waves-effect hoverable'>Register</button>
         </div>
     </div>
   </div>

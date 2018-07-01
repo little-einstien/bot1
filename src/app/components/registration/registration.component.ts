@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class RegistrationComponent implements OnInit {
   public email = '';
   public name = '';
+  public mobile = '';
 
   constructor() { }
 
@@ -15,6 +16,10 @@ export class RegistrationComponent implements OnInit {
   }
   register(){
     alert();
+  }
+  validate(){
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/igm;
+    return ((!this.name || !this.email || this.mobile) || (this.email && !re.test(this.email)));
   }
 
 }
