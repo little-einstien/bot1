@@ -6,7 +6,6 @@
         <div class="step-content">
           <div class="row">
             <div class="input-field col s12">
-              <span class ="black-text">Pick date of appointment </span>
               <ng-datepicker [(ngModel)]="st" [options]="options" (ngModelChange)="getSlots()"></ng-datepicker>
               <div id="slots-viewer" *ngIf="st">
                 <div *ngIf="mslots.length == 0  && eslots.length == 0">
