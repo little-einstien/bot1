@@ -106,6 +106,7 @@ getResponse($event) {
   if ($event == "e645dbbd-dbcc-45b2-904f-b0cb9559b628") {
     type = 4
     txt = {
+      for: 'Skin problems',
       title: 'Thanks, Could you share the details below further?', data: [
         { t: "i", ph: "What is your age" ,value : ""},
         { t: 'r', name: "sex",label : 'What is your gender', l: [{ label: "Male",value : "" }, { label: "Female",value : "" }] },
@@ -119,6 +120,7 @@ getResponse($event) {
   if ($event == "1433143d-7ecd-4d99-8b55-a43833f35ea6") {
     type = 4
     txt = {
+      for : 'Hair loss',
       title: 'Thanks, Could you share the details below further?', data: [
         { t: "i", ph: "Your good Name",value : "" },
         { t: "i", ph: "What is your age",value : "" },
