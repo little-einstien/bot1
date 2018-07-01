@@ -46,7 +46,7 @@ ngAfterViewInit() {
     if (params.project) {
       this.dialogflowService.project = params.project;
       this.messages.push(
-        new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). My name Pkasy, your AI assitant.' , type: 0 }, 'assets/images/bot.png', 'bot', new Date())
+        new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). My name Pkasy, your AI experience assitant.' , type: 0 }, 'assets/images/bot.png', 'bot', new Date())
       );
       this.wetherMessage().then(() => {
         this.dialogflowService.getProjectDetails(params.project).then((proj) => {
@@ -165,7 +165,7 @@ wetherMessage() {
         console.log(data.data.name)
       }, 500)
       setTimeout({this.messages.push(new Message({
-        txt: 'Tell me how can i help you', type: 0
+        txt: 'Tell me how can i help you today', type: 0
       }, 'assets/images/bot.png', 'bot', new Date()))}, 500);
       resolve();
     })
