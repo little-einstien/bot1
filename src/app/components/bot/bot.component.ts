@@ -66,7 +66,9 @@ ngAfterViewInit() {
                 this.messages.push(
                   new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
                 );
+                setTimeout(() => { this.scrollToBottom() }, 250);
               }, 1000);
+
             }
           }).catch((err) => {
             console.log(err);
@@ -166,7 +168,7 @@ wetherMessage() {
       }, 500)
       setTimeout(() => {this.messages.push(new Message({
         txt: 'Tell me how can i help you today ?', type: 0
-      }, 'assets/images/bot.png', 'bot', new Date()))}, 500);
+      }, 'assets/images/bot.png', 'bot', new Date()))}, 700);
       resolve();
     })
 
