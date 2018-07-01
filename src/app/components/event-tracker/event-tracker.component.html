@@ -67,18 +67,20 @@
               <span class="">Remarks</span>
               <input placeholder="remarks" type="text" [(ngModel)]="remarks" class="validate " required>
             </div>
+            <div class="input-field col s12">
             <p class="col s6">
               <label>
                 <input name="group1" type="radio" [value] = "cash" (change)="pmode = 'cash'"/>
-                <span>Online</span>
+                <span>Cash</span>
               </label>
             </p>
             <p class="col s6">
               <label>
                 <input name="group1" type="radio" [value] = "online" (change)="pmode = 'online'"/>
-                <span>Cash</span>
+                <span>Online</span>
               </label>
             </p>
+            </div>
           </div>
           <div class="row" *ngIf = "pmode == 'online'">
             <div class="col s12">
