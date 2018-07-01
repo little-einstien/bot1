@@ -22,7 +22,11 @@ export class RegistrationComponent implements OnInit {
   }
   validate(){
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/igm;
-    return ((!this.name || !this.email || this.mobile) || (this.email && !re.test(this.email)));
+    var mobilere = /^\d{10}$/;
+    return ((!this.name || !this.email || !this.mobile)
+     || (this.email && !re.test(this.email))
+     || (this.mobile && !mobilere.test(this.mobile))
+    );
   }
 
 }
