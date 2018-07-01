@@ -105,7 +105,7 @@ getResponse($event) {
   }
   if($event  == 'form'){
     this.messages.push(
-      new Message({ txt: 'Thank you for filling the form', type: 0}, 'assets/images/bot.png', 'bot', new Date())
+      new Message({ txt: `Thanks for sharing the details. This is a common problem these days. Don't worry, You can book an appointment and visit the clinic for the treatment.` , type: 0}, 'assets/images/bot.png', 'bot', new Date())
     );
     setTimeout(() => { this.scrollToBottom() }, 250);
     return;
