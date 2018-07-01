@@ -52,22 +52,23 @@
         <div class="step-content">
           <div class="row">
             <div class="input-field col s12">
-              <span class="">Full Name</span>
+              <!-- <span class="">Full Name</span> -->
               <input placeholder="Enter your full name" [(ngModel)]="name" type="text" class="validate " required>
             </div>
             <div class="input-field col s12">
-              <span class="">Mobile</span>
+              <!-- <span class="">Mobile</span> -->
               <input placeholder="Enter your mobile" type="text" [(ngModel)]="mobile" class="validate " required>
             </div>
             <div class="input-field col s12">
-              <span class="">Email</span>
+              <!-- <span class="">Email</span> -->
               <input placeholder="Enter your email" type="text" [(ngModel)]="email" class="validate " required>
             </div>
             <div class="input-field col s12">
-              <span class="">Remarks</span>
+              <!-- <span class="">Remarks</span> -->
               <input placeholder="remarks" type="text" [(ngModel)]="remarks" class="validate " required>
             </div>
             <div class="input-field col s12">
+                <span class="col s12">Choose payment mode</span> 
             <p class="col s6">
               <label>
                 <input name="group1" type="radio" [value] = "cash" (change)="pmode = 'cash'"/>
