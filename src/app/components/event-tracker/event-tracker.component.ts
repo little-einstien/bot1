@@ -108,7 +108,8 @@ export class EventTrackerComponent implements OnInit {
     this.selectedSlot = slot;
     //alert(slot);
   }
-
-
-  
+  validate(){
+    var re = /^(([^<>()[]\.,;:s@"]+(.[^<>()[]\.,;:s@"]+)*)|(".+"))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/igm;
+    return ((!this.name && !this.mobile ) || (this.email && !re.test(this.email)));
+  }
 }
