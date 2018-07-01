@@ -164,7 +164,7 @@ wetherMessage() {
         }, 'assets/images/bot.png', 'bot', new Date()))
         console.log(data.data.name)
       }, 500)
-      setTimeout({this.messages.push(new Message({
+      setTimeout(() => {this.messages.push(new Message({
         txt: 'Tell me how can i help you today', type: 0
       }, 'assets/images/bot.png', 'bot', new Date()))}, 500);
       resolve();
