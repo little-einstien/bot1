@@ -3617,8 +3617,8 @@ ul.stepper .step-actions {
   padding-left: 0px !important;
 }
 .p-r-10 {
-  padding-right: 10px;
+  padding-right: 10px !important;
   }
 .p-t-10{
-  padding-top: 10px;
+  padding-top: 10px !important;
 }
