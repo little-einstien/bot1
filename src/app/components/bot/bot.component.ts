@@ -203,8 +203,6 @@ export class BotComponent implements OnInit, AfterViewInit {
     this.windowRef.nativeWindow.top.location.href = 'http://ailifebot.com';
   }
   sendMsg($event) {
-    alert('called');
-    console.log($event);
     this.messages[this.messages.length-1] = new Message({
       txt: `Your appointment has been submitted to Doctor. 
       <p>
