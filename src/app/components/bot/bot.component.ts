@@ -98,10 +98,11 @@ getChildren(parent, data) {
 }
 getResponse($event) {
   
-  
-  this.messages.push(
-    new Message({ txt: `You have selected ${this.flow.nodes[$event].btn_txt}`, type: 0}, 'assets/images/user.png', 'user', new Date())
-  );
+  if(this.flow.nodes[$event]){
+    this.messages.push(
+      new Message({ txt: `You have selected ${this.flow.nodes[$event].btn_txt}`, type: 0}, 'assets/images/user.png', 'user', new Date())
+    );
+  }
   if($event  == 'form'){
     this.messages.push(
       new Message({ txt: 'Thank you for filling the form', type: 0}, 'assets/images/bot.png', 'bot', new Date())
