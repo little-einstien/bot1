@@ -11,7 +11,7 @@
                 <div *ngIf="mslots.length == 0  && eslots.length == 0">
                   <span class="red-text">Sorry no slots available from doctor side</span>
                 </div>
-                <div *ngIf="(mslots && mslots.length != 0) || (eslots && eslots.length != 0) " >
+                <div *ngIf="(mslots && mslots.length != 0) || (eslots && eslots.length != 0) ">
                   <div id="m-slots-viewer" *ngIf="mslots && mslots.length != 0">
                     <div class="row">
                       <span class="col s12 black-text">Morning Slots</span>
@@ -68,22 +68,24 @@
               <input placeholder="remarks" type="text" [(ngModel)]="remarks" class="validate " required>
             </div>
             <div class="input-field col s12 p-t-10 ">
-                <span class="col s12 black-text p-l-0">Choose payment mode</span> 
-            <p class="col s6 p-l-0">
-              <label>
-                <input name="group1" type="radio" [value] = "cash" (change)="pmode = 'cash'"/>
-                <span>Cash</span>
-              </label>
-            </p>
-            <p class="col s6">
-              <label>
-                <input name="group1" type="radio" [value] = "online" (change)="pmode = 'online'"/>
-                <span>Online</span>
-              </label>
-            </p>
+              <span class="col s12 black-text p-l-0">Choose payment mode</span>
+              <div class="p-l-0 m-t-10">
+                <p class="col s6 ">
+                  <label>
+                    <input name="group1" type="radio" [value]="cash" (change)="pmode = 'cash'" />
+                    <span>Cash</span>
+                  </label>
+                </p>
+                <p class="col s6">
+                  <label>
+                    <input name="group1" type="radio" [value]="online" (change)="pmode = 'online'" />
+                    <span>Online</span>
+                  </label>
+                </p>
+              </div>
             </div>
           </div>
-          <div class="row" *ngIf = "pmode == 'online'">
+          <div class="row" *ngIf="pmode == 'online'">
             <div class="col s12">
               <a href="drgeetagera.com">Click here for payment</a>
             </div>
@@ -94,7 +96,7 @@
             <div class="step-actions">
               <a class="waves-effect waves-dark btn center-align col s6 hoverable dr-bot-btn next-step white-text">Next</a>
               <a class="waves-effect waves-dark btn-flat center-align col s6 hoverable dr-bot-btn previous-step white-text">Back</a>
-              
+
             </div>
           </div>
         </div>
