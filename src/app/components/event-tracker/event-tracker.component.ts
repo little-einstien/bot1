@@ -23,6 +23,7 @@ export class EventTrackerComponent implements OnInit {
   public mobile;
   public email;
   public st;
+  public remarks;
   options: DatepickerOptions = {
     minYear: 1970,
     maxYear: 2030,
@@ -85,6 +86,7 @@ export class EventTrackerComponent implements OnInit {
       pid: "f7W18EB",
       date : this.st.getTime(),
       slot:this.selectedSlot,
+      remarks:this.remarks,
       "user": { "id": "ww", "name": this.name,"mobile":this.mobile,"email":this.email }
     });
   }
