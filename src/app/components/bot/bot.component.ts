@@ -46,7 +46,7 @@ ngAfterViewInit() {
     if (params.project) {
       this.dialogflowService.project = params.project;
       this.messages.push(
-        new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). My name Pkasy, your AI experience assitant.' , type: 0 }, 'assets/images/bot.png', 'bot', new Date())
+        new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). I am Pkasy, your AI experience assitant.' , type: 0 }, 'assets/images/bot.png', 'bot', new Date())
       );
       this.wetherMessage().then(() => {
         this.dialogflowService.getProjectDetails(params.project).then((proj) => {
@@ -158,7 +158,7 @@ wetherMessage() {
       setTimeout(() => {
         this.messages.push(new Message({
           txt: `
-          <p>Do you know todays temperature in ${data.data.name}  is <b>${data.data.main.temp - 273.15} <sup >C</sup></b>
+          <p>Do you know todays temperature in ${data.data.name}  is <span><b>${data.data.main.temp - 273.15} <sup >C</sup></b></span>
           please take care of your Head and Skin as it is ${data.data.weather[0].description} outside</p>
           `, type: 0
         }, 'assets/images/bot.png', 'bot', new Date()))
