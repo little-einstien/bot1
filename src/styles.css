@@ -3599,7 +3599,9 @@ ul.stepper .step-actions {
 .ngx-datepicker-container .ngx-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-today {
   height: 30px !important;
 }
-
+.dr-bot-btn{
+  background: rgb(231, 87, 122)
+}
 .m-l-0 {
   margin-left: 0px !important;
 }
