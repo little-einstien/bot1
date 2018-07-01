@@ -16,7 +16,7 @@
         </div>
         <div class="col s12 m-l-0 m-b-8">
             <label *ngFor="let cb of object.l " class=" p-r-10">
-              <input name="{{object.name}}" [(ngModel)]  = "cb.value" type="checkbox" />
+              <input name="{{object.name}}"  [(ngModel)]  = "object.value" type="checkbox" />
               <span>{{cb.label}}</span>
             </label>
           </div>

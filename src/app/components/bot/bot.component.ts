@@ -96,6 +96,7 @@ getResponse($event) {
     this.messages.push(
       new Message({ txt: 'Thank you for filling the form', type: 0}, 'assets/images/bot.png', 'bot', new Date())
     );
+    setTimeout(() => { this.scrollToBottom() }, 250);
     return;
   }
 
