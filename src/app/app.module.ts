@@ -20,10 +20,11 @@ import { ScheduleViewerComponent } from './components/schedule-viewer/schedule-v
 import { WindowRef } from './WindowRef';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { StpperFormComponent } from './components/stpper-form/stpper-form.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
-    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent, EventTrackerComponent, ScheduleViewerComponent, StpperFormComponent
+    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent, EventTrackerComponent, ScheduleViewerComponent, StpperFormComponent, RegistrationComponent
 
   ],
   imports: [
