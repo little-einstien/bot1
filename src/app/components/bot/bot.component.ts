@@ -66,7 +66,7 @@ ngAfterViewInit() {
                 this.messages.push(
                   new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
                 );
-                setTimeout(() => { this.scrollToBottom() }, 250);
+                // setTimeout(() => { this.scrollToBottom() }, 250);
               }, 1000);
 
             }
