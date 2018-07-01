@@ -5,7 +5,7 @@
     AI Life BOT
 	</div>
   <div class="chatlist" #chatlist >
-      <perfect-scrollbar #scrollRef style="height: calc(100vh - 132px);" [config]="config">
+      <perfect-scrollbar #scrollRef style="height: calc(100vh - 132px);" [config]="config" [autoPropagation] = "true">
 
       <message-list (responseClick)="getResponse($event)" [messages]="messages" [props]="props"></message-list>
     </perfect-scrollbar>
