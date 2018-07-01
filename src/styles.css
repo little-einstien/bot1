@@ -3634,6 +3634,6 @@ ul.stepper .step-actions {
 .m-b-0{
   margin-bottom: 0px;
 }
-.dr-color{
+.dr-color , .dr-color:hover , .dr-color:focus{
   background: rgb(231, 87, 122);
 }

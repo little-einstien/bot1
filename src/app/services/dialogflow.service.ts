@@ -189,7 +189,7 @@ saveForm(details) {
     });
   });
  }
- registerUser() {
+ registerUser(registrationData) {
   return new Promise((resolve, reject) => {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -197,7 +197,7 @@ saveForm(details) {
       })
     };
     let url = this.apiRoot + '/register';
-    var registrationData = {'name':'','gender':'','mobile':''};
+
     this.http.post(url, registrationData, httpOptions).subscribe(res => {
       resolve(res);
     });

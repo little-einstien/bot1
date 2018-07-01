@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DialogflowService } from '../../services/dialogflow.service';
 
 @Component({
   selector: 'app-registration',
@@ -10,12 +11,14 @@ export class RegistrationComponent implements OnInit {
   public name = '';
   public mobile = '';
 
-  constructor() { }
+  constructor(private dataHandlerService : DialogflowService) { }
 
   ngOnInit() {
   }
   register(){
-    alert();
+    this.dataHandlerService.registerUser({'name':this.name,'email':this.email,'mobile':this.mobile}).then(data => {
+      alert(data);
+    });
   }
   validate(){
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/igm;
