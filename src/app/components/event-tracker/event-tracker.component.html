@@ -37,7 +37,7 @@
                   </div>
                   <div class="row">
                     <div class="step-actions">
-                      <button [disabled] = "!selectedSlot" class="waves-effect center-align col s12 hoverable waves-dark btn dr-bot-btn next-step white-text">Next</button>
+                      <button [disabled]="!selectedSlot" class="waves-effect center-align col s12 hoverable waves-dark btn dr-bot-btn next-step white-text">Next</button>
                     </div>
                   </div>
                 </div>
@@ -84,15 +84,17 @@
             </div>
           </div>
           <div class="row" *ngIf="pmode == 'online'">
-            <div class="col s12">
-              <a href="drgeetagera.com">Click here for payment</a>
+            <div class="col s12 p-t-10">
+              <a href="drgeetagera.com">
+                <i class="material-icons" class="black-text">payment</i>
+                Click here for payment</a>
             </div>
 
           </div>
           <br />
           <div class="row col s12">
             <div class="step-actions">
-              <button  [disabled] = "validate()" class="waves-effect waves-dark btn center-align col s6 hoverable dr-bot-btn next-step white-text">Next</button>
+              <button [disabled]="validate()" class="waves-effect waves-dark btn center-align col s6 hoverable dr-bot-btn next-step white-text">Next</button>
               <button class="waves-effect waves-dark btn-flat center-align col s6 hoverable dr-bot-btn previous-step white-text">Back</button>
 
             </div>
