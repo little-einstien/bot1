@@ -85,7 +85,7 @@ export class DialogflowService {
     let url = `${this.apiRoot}/api/appointments`;
     this.http.post(url, appointment, httpOptions).subscribe(res => {
       if (res) {
-        alert("Appointment saved");
+        alert("Your appointment has been submitted to doctor");
       }
       // resolve(res);
     });
