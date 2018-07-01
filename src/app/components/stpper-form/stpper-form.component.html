@@ -8,36 +8,36 @@
         <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
-        <input required data-error="its a required field" data-success="" placeholder="Write your answer" name = "{{object.ph}}" type="text" [(ngModel)]  = "object.value" class="validate">
+        <input required data-error="its a required field" data-success="" placeholder="Write your answer" name="{{object.ph}}" type="text"
+          [(ngModel)]="object.value" class="validate">
       </div>
       <div *ngSwitchCase="'cb'">
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
           {{object.label}}
         </div>
         <div class="col s12 m-l-0 m-b-8">
-            <label *ngFor="let cb of object.l " class=" p-r-10">
-              <input name="{{object.name}}" [value]="cb.label" 
-              (change)="object.value = cb.label" type="checkbox" />
-              <span>{{cb.label}}</span>
-            </label>
-          </div>
+          <label *ngFor="let cb of object.l " class=" p-r-10">
+            <input name="{{object.name}}" [value]="cb.label" (change)="object.value = cb.label" type="checkbox" />
+            <span>{{cb.label}}</span>
+          </label>
+        </div>
       </div>
       <div *ngSwitchCase="'r'">
         <div *ngIf="object.label" class="col s12  black-text m-b-8">
           {{object.label}}
         </div>
         <div class="col s12 m-l-0 m-b-8">
-            <label *ngFor="let cb of object.l " class=" p-r-10">
-              <input name="{{object.name}}" [(ngModel)]  = "cb.value" type="radio" />
-              <span>{{cb.label}}</span>
-            </label>
-          </div>
+          <label *ngFor="let cb of object.l " class=" p-r-10">
+            <input name="{{object.name}}" [(ngModel)]="cb.value" type="radio" />
+            <span>{{cb.label}}</span>
+          </label>
+        </div>
       </div>
       <div class="col s12 m-b-8" *ngSwitchCase="'ta'">
         <div class="col s12  black-text p-l-0">
           {{object.ph}}
         </div>
-        <textarea name="textarea1" [(ngModel)]  = "object.value" placeholder="Write your answer" class="materialize-textarea"></textarea>
+        <textarea name="textarea1" [(ngModel)]="object.value" placeholder="Write your answer" class="materialize-textarea"></textarea>
       </div>
       <div class="col s12 m-b-8" *ngSwitchCase="'l'">
         <div class="col s12  black-text p-l-0">
@@ -46,7 +46,7 @@
       </div>
 
       <div class="col s12" *ngSwitchCase="'btn'">
-        <a class="waves-effect waves-light btn " (click) = "saveData()" style="background: rgb(231, 87, 122)">{{object.label}}</a>
+        <a class="waves-effect waves-light btn " (click)="saveData()" style="background: rgb(231, 87, 122)">{{object.label}}</a>
       </div>
     </span>
   </form>
