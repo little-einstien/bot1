@@ -45,7 +45,9 @@ ngAfterViewInit() {
     console.log(params);
     if (params.project) {
       this.dialogflowService.project = params.project;
-
+      this.messages.push(
+        new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). My name Pkasy, your AI assitant.' , type: 0 }, 'assets/images/bot.png', 'bot', new Date())
+      );
       this.wetherMessage().then(() => {
         this.dialogflowService.getProjectDetails(params.project).then((proj) => {
           this.project = proj;
@@ -59,6 +61,7 @@ ngAfterViewInit() {
             if (flow['sp']) {
               let startingNode = flow['sp'];
               this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
+              
               setTimeout(() => {
                 this.messages.push(
                   new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
@@ -155,12 +158,15 @@ wetherMessage() {
       setTimeout(() => {
         this.messages.push(new Message({
           txt: `
-          <p>Hey todays temperature in ${data.data.name}  is <b>${data.data.main.temp - 273.15} <sup >C</sup></b>
+          <p>Do you know todays temperature in ${data.data.name}  is <b>${data.data.main.temp - 273.15} <sup >C</sup></b>
           please take care of your Head and Skin as it is ${data.data.weather[0].description} outside</p>
           `, type: 0
         }, 'assets/images/bot.png', 'bot', new Date()))
         console.log(data.data.name)
       }, 500)
+      setTimeout({this.messages.push(new Message({
+        txt: 'Tell me how can i help you', type: 0
+      }, 'assets/images/bot.png', 'bot', new Date()))}, 500);
       resolve();
     })
 
