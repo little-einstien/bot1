@@ -97,6 +97,10 @@ getChildren(parent, data) {
   return to;
 }
 getResponse($event) {
+  let txt = this.flow.nodes[$event].label;
+  this.messages.push(
+    new Message({ txt: `${txt}`, type: 0}, 'assets/images/user.png', 'user', new Date())
+  );
   if($event  == 'form'){
     this.messages.push(
       new Message({ txt: 'Thank you for filling the form', type: 0}, 'assets/images/bot.png', 'bot', new Date())
@@ -105,7 +109,7 @@ getResponse($event) {
     return;
   }
 
-  let txt = this.flow.nodes[$event].label;
+  //let txt = this.flow.nodes[$event].label;
   let children = this.getChildren($event, this.flow.edges);
   let type = children && children.length != 0 ? 2 : 1;
   if ($event == "2c25e2d1-a17a-4915-988b-4b224bfa94f4") type = 3;
