@@ -202,4 +202,8 @@ wetherMessage() {
 goToUrl(): void {
   this.windowRef.nativeWindow.top.location.href = 'http://ailifebot.com';
 }
+sendMsg($event){
+  alert('called');
+  console.log($event);
+}
 }

@@ -86,6 +86,7 @@ export class DialogflowService {
     this.http.post(url, appointment, httpOptions).subscribe((res:any) => {
       if (res) {
         alert(`Your appointment has been submitted to Doctor. Your Booking id is  ${res.id}. Kindly Make the Payment Online.`);
+        resolve(res);
       }
       // resolve(res);
     });

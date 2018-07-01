@@ -9,6 +9,7 @@ import { MessageItemComponent } from '../message-item/message-item.component';
 })
 export class MessageListComponent implements OnInit, AfterViewInit {
   @Output() responseClick: EventEmitter<any> = new EventEmitter();
+  @Output() sendMessage: EventEmitter<any> = new EventEmitter();
   @Input('messages')
   public messages: Message[];
   @Input('props')
@@ -33,4 +34,9 @@ export class MessageListComponent implements OnInit, AfterViewInit {
   getResponse($event){
     this.responseClick.emit($event);
   }
+  
+  sendMsg($event){
+    this.sendMessage.emit($event);
+  }
+
 }

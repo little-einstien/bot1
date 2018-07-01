@@ -8,6 +8,7 @@ import { Message } from '../../models/message';
 })
 export class MessageItemComponent implements OnInit {
   @Output() responseClick: EventEmitter<any> = new EventEmitter();
+  @Output() sendMessage: EventEmitter<any> = new EventEmitter();
   @Input('props')
   public props;
   @Input('message')
@@ -16,5 +17,8 @@ export class MessageItemComponent implements OnInit {
   ngOnInit() { }
   getResponse(id) {
     this.responseClick.emit(id);
+  }
+  sendMsg(data){
+    this.sendMessage.emit(data);
   }
 }

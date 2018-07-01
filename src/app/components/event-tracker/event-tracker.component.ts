@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, Output, EventEmitter } from '@angular/core';
 import * as M from 'materialize-css';
 import * as _ from 'lodash';
 // import * as $ from 'jquery';
@@ -13,7 +13,7 @@ import * as frLocale from 'date-fns/locale/fr';
 })
 export class EventTrackerComponent implements OnInit {
   data:any[] = [];
-  
+  @Output() sendMessage: EventEmitter<any> = new EventEmitter();
   public mslots;
   public eslots;
   public selectedSlot;
@@ -89,6 +89,8 @@ export class EventTrackerComponent implements OnInit {
       slot:this.selectedSlot,
       remarks:this.remarks,
       "user": { "id": "ww", "name": this.name,"mobile":this.mobile,"email":this.email }
+    }).then((res) => {
+      this.sendMessage.emit(res);
     });
   }
   getSlots() {
