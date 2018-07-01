@@ -30,7 +30,9 @@ export class StpperFormComponent implements OnInit {
   }
   saveData(){
     console.log(this.data);
-    this.responseClick.emit('form');
+    this.dataHandlerService.saveForm(this.data).then(() => {
+      this.responseClick.emit('form');
+    });
   }
 
 }

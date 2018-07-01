@@ -158,4 +158,18 @@ getTemprature(lat,lon){
     });
   });
 }
+saveForm(details) {
+  return new Promise((resolve, reject) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let url = this.apiRoot + '/api/form';
+    this.http.post(url, details, httpOptions).subscribe(res => {
+      resolve(res);
+    });
+  });
+ }
+ 
 }
