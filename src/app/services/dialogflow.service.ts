@@ -174,13 +174,8 @@ saveForm(details) {
  }
  isUserRegistered(){
   return new Promise((resolve, reject) => {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
     let url = `${this.apiRoot}/chkusr` ;
-    this.http.get(url, httpOptions).subscribe(res => {
+    this.http.get(url).subscribe(res => {
       if(res == '0'){
         resolve(true);
       }else{
