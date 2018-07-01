@@ -11,7 +11,7 @@
               <ng-datepicker [(ngModel)]="st" [options]="options" (ngModelChange)="getSlots()"></ng-datepicker>
               <div id="slots-viewer" *ngIf="st">
                 <div *ngIf="mslots.length == 0  && eslots.length == 0">
-                  <span class="red-tex">Sorry no slots available from doctor side</span>
+                  <span class="red-text">Sorry no slots available from doctor side</span>
                 </div>
                 <div id="m-slots-viewer" *ngIf="mslots && mslots.length != 0">
                   <div class="row">
@@ -21,7 +21,7 @@
                     <p class="col s4" *ngFor="let slot of mslots">
                       <label>
                         <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
-                        <span>{{slot}}</span>
+                        <span>{{slot.l}}</span>
                       </label>
                     </p>
                   </div>
@@ -32,7 +32,7 @@
                     <p class="col s4" *ngFor="let slot of eslots">
                       <label>
                         <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
-                        <span>{{slot}}</span>
+                        <span>{{slot.l}}</span>
                       </label>
                     </p>
 
