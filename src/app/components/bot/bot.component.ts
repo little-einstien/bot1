@@ -97,7 +97,8 @@ getChildren(parent, data) {
   return to;
 }
 getResponse($event) {
-  let txt = this.flow.nodes[$event].label;
+  
+  
   this.messages.push(
     new Message({ txt: `You have selected ${this.flow.nodes[$event].btn_txt}`, type: 0}, 'assets/images/user.png', 'user', new Date())
   );
@@ -108,7 +109,7 @@ getResponse($event) {
     setTimeout(() => { this.scrollToBottom() }, 250);
     return;
   }
-
+  let txt = this.flow.nodes[$event].label;
   //let txt = this.flow.nodes[$event].label;
   let children = this.getChildren($event, this.flow.edges);
   let type = children && children.length != 0 ? 2 : 1;
