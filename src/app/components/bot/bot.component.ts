@@ -99,7 +99,7 @@ getChildren(parent, data) {
 getResponse($event) {
   let txt = this.flow.nodes[$event].label;
   this.messages.push(
-    new Message({ txt: `${txt}`, type: 0}, 'assets/images/user.png', 'user', new Date())
+    new Message({ txt: `${this.flow.nodes[$event].btn_txt}`, type: 0}, 'assets/images/user.png', 'user', new Date())
   );
   if($event  == 'form'){
     this.messages.push(
