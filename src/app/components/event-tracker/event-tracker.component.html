@@ -53,20 +53,38 @@
           <div class="row">
             <div class="input-field col s12">
               <span class="">Full Name</span>
-              <input placeholder="Enter your full name" [(ngModel)]="name" type="text" class="validate ">
+              <input placeholder="Enter your full name" [(ngModel)]="name" type="text" class="validate " required>
             </div>
             <div class="input-field col s12">
               <span class="">Mobile</span>
-              <input placeholder="Enter your mobile" type="text" [(ngModel)]="mobile" class="validate ">
+              <input placeholder="Enter your mobile" type="text" [(ngModel)]="mobile" class="validate " required>
             </div>
             <div class="input-field col s12">
               <span class="">Email</span>
-              <input placeholder="Enter your email" type="text" [(ngModel)]="email" class="validate ">
+              <input placeholder="Enter your email" type="text" [(ngModel)]="email" class="validate " required>
             </div>
             <div class="input-field col s12">
               <span class="">Remarks</span>
-              <input placeholder="remarks" type="text" [(ngModel)]="remarks" class="validate ">
+              <input placeholder="remarks" type="text" [(ngModel)]="remarks" class="validate " required>
             </div>
+            <p class="col s6">
+              <label>
+                <input name="group1" type="radio" [value] = "cash" (change)="pmode = 'cash'"/>
+                <span>Online</span>
+              </label>
+            </p>
+            <p class="col s6">
+              <label>
+                <input name="group1" type="radio" [value] = "online" (change)="pmode = 'online'"/>
+                <span>Cash</span>
+              </label>
+            </p>
+          </div>
+          <div class="row" *ngIf = "pmode == 'online'">
+            <div class="col s12">
+              <a href="drgeetagera.com">Click here for payment</a>
+            </div>
+
           </div>
           <br />
           <div class="row col s12">

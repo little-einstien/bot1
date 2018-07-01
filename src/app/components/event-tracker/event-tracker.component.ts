@@ -24,6 +24,7 @@ export class EventTrackerComponent implements OnInit {
   public email;
   public st;
   public remarks;
+  public pmode;
   options: DatepickerOptions = {
     minYear: 1970,
     maxYear: 2030,
