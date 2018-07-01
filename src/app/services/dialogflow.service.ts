@@ -181,11 +181,25 @@ saveForm(details) {
     };
     let url = `${this.apiRoot}/chkusr` ;
     this.http.get(url, httpOptions).subscribe((res:any) => {
-      if(res && res.data == '0'){
+      if(res && res.data == '1'){
         resolve(true);
       }else{
         resolve(false);
       }
+    });
+  });
+ }
+ registerUser() {
+  return new Promise((resolve, reject) => {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let url = this.apiRoot + '/register';
+    var registrationData = {'name':'','gender':'','mobile':''};
+    this.http.post(url, registrationData, httpOptions).subscribe(res => {
+      resolve(res);
     });
   });
  }
