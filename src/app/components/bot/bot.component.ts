@@ -45,55 +45,52 @@ export class BotComponent implements OnInit, AfterViewInit {
       console.log(params);
       if (params.project) {
         this.dialogflowService.project = params.project;
-        this.dialogflowService.isUserRegistered().then((isUserRegistered) => {
-          if(isUserRegistered){
-            this.initRegisteredFlow(params);
-          }else{
-            this.initUnRegisteredFlow();
-          }
-        })
-
-
-        
+        this.dialogflowService.getProjectDetails(params.project).then((proj) => {
+          this.project = proj;
+          this.props.bg_clr = proj['bg_clr'];
+          this.props.h_clr = proj['h_clr'];
+          this.props.ucb_clr = proj['ucb_clr'];
+          this.props.bcb_clr = proj['bcb_clr'];
+          this.props.header = proj['header'];
+          this.dialogflowService.isUserRegistered().then((isUserRegistered) => {
+            if (isUserRegistered) {
+              this.initRegisteredFlow(params);
+            } else {
+              this.initUnRegisteredFlow();
+            }
+          });
+        });
       }
     });
   }
   close() {
     window.parent.postMessage('message', '*');
   }
-  initRegisteredFlow(params){
+  initRegisteredFlow(params) {
     this.messages.push(
       new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). I am Duffy, your AI experience assitant.', type: 0 }, 'assets/images/bot.png', 'bot', new Date())
     );
     this.wetherMessage().then(() => {
-      this.dialogflowService.getProjectDetails(params.project).then((proj) => {
-        this.project = proj;
-        this.props.bg_clr = proj['bg_clr'];
-        this.props.h_clr = proj['h_clr'];
-        this.props.ucb_clr = proj['ucb_clr'];
-        this.props.bcb_clr = proj['bcb_clr'];
-        this.props.header = proj['header'];
-        this.dialogflowService.getFlow(params.project).then((flow) => {
-          this.flow = flow['flow'];
-          if (flow['sp']) {
-            let startingNode = flow['sp'];
-            this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
+      this.dialogflowService.getFlow(params.project).then((flow) => {
+        this.flow = flow['flow'];
+        if (flow['sp']) {
+          let startingNode = flow['sp'];
+          this.message = new Message({ txt: '', type: 0 }, 'assets/images/user.png', 'user', new Date());
 
-            setTimeout(() => {
-              this.messages.push(
-                new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
-              );
-              // setTimeout(() => { this.scrollToBottom() }, 250);
-            }, 1000);
+          setTimeout(() => {
+            this.messages.push(
+              new Message({ txt: this.flow.nodes[startingNode].label, type: 2, children: this.getChildren(startingNode, this.flow.edges) }, 'assets/images/bot.png', 'bot', new Date())
+            );
+            // setTimeout(() => { this.scrollToBottom() }, 250);
+          }, 1000);
 
-          }
-        }).catch((err) => {
-          console.log(err);
-        });
+        }
+      }).catch((err) => {
+        console.log(err);
       });
     });
   }
-  initUnRegisteredFlow(){
+  initUnRegisteredFlow() {
     this.messages.push(
       new Message({ txt: 'Please register your self', type: 5 }, 'assets/images/bot.png', 'bot', new Date())
     );
@@ -219,7 +216,7 @@ export class BotComponent implements OnInit, AfterViewInit {
     this.windowRef.nativeWindow.top.location.href = 'http://ailifebot.com';
   }
   sendMsg($event) {
-    this.messages[this.messages.length-1] = new Message({
+    this.messages[this.messages.length - 1] = new Message({
       txt: `Your appointment has been submitted to Doctor. 
       <p>
         <b>Appointment Details </b>
