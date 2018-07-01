@@ -95,7 +95,7 @@ export class BotComponent implements OnInit, AfterViewInit {
   }
   initUnRegisteredFlow(){
     this.messages.push(
-      new Message({ txt: 'Please register your self', type: 0 }, 'assets/images/bot.png', 'bot', new Date())
+      new Message({ txt: 'Please register your self', type: 5 }, 'assets/images/bot.png', 'bot', new Date())
     );
   }
   getChildren(parent, data) {
