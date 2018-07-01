@@ -206,7 +206,19 @@ export class BotComponent implements OnInit, AfterViewInit {
     alert('called');
     console.log($event);
     this.messages[this.messages.length-1] = new Message({
-      txt: `Your appointment has been submitted to Doctor. Your Booking id is  ${$event.id}<p>asada</p>`, type: 0
+      txt: `Your appointment has been submitted to Doctor. 
+      <p>
+        <b>Appointment Details </b>
+      </p>
+      <p>
+        <b>Booking id </b> : ${$event.id}
+      </p>
+      <p>
+        <b>Date</b> : ${new Date($event.date).toUTCString()}
+      </p>
+      <p>
+        <b>Slot</b> : ${$event.slot.l}
+      </p>`, type: 0
     }, 'assets/images/bot.png', 'bot', new Date());
   }
 }
