@@ -56,7 +56,8 @@ export class BotComponent implements OnInit, AfterViewInit {
             if (isUserRegistered) {
               this.initRegisteredFlow(params);
             } else {
-              this.initUnRegisteredFlow();
+              // this.initUnRegisteredFlow();
+              this.initRegisteredFlow(params);
             }
           });
         });
