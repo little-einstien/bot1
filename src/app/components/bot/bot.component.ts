@@ -69,7 +69,7 @@ export class BotComponent implements OnInit, AfterViewInit {
   }
   initRegisteredFlow(params) {
     this.messages.push(
-      new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). I am Duffy, your AI experience assitant.', type: 0 }, 'assets/images/bot.png', 'bot', new Date())
+      new Message({ txt: 'Welcome To DR. GEETA GERA (SKIN, HAIR & LASER CLINIC). I am Duffy, your AI experience assistant.', type: 0 }, 'assets/images/bot.png', 'bot', new Date())
     );
     this.wetherMessage().then(() => {
       this.dialogflowService.getFlow(params.project).then((flow) => {
