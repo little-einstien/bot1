@@ -118,4 +118,10 @@ export class EventTrackerComponent implements OnInit {
   moveToPaymentSite(){
     this.windowRef.nativeWindow.top.location.href = 'http://drgeetagera.com';
   }
+  getTimeLabel(date){
+    let hrs_mins = this.selectedSlot.l.split(":");
+    date.setHours(hrs_mins[0]);
+    date.setMinutes(hrs_mins[1]);
+    return date.toUTCString();
+  }
 }
