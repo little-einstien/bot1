@@ -105,16 +105,16 @@
             <div class="col s12 m6">
               <div class="card  darken-1">
                 <div class="card-content ">
-                  <span class="card-title black-text">Appointment Details</span>
+                  <span class="card-title black-text  booking-card-heading">Appointment Details</span>
                   <div class="black-text">
-                    <h5>{{getTimeLabel(st)}}</h5>
+                    <h6><b> Date : </b>{{getTimeLabel(st)}}</h6>
                     <h6>
-                      <span>slot : </span>{{selectedSlot ? selectedSlot.l : ''}}</h6>
+                        <b> Slot : </b>{{selectedSlot ? selectedSlot.l : ''}}</h6>
                   </div>
                   <div class="black-text">
-                    <h6>{{name}}</h6>
-                    <h6>{{mobile}}</h6>
-                    <h6>{{email}}</h6>
+                    <h6><b> Name : </b> {{name}}</h6>
+                    <h6><b> Mobile : </b> {{mobile}}</h6>
+                    <h6 *ngIf = "email" ><b> Email : </b> {{email}}</h6>
                   </div>
                 </div>
               </div>

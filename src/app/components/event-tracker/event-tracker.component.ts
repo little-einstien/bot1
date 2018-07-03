@@ -131,6 +131,6 @@ export class EventTrackerComponent implements OnInit {
     }
   }
   downloadTandC(){
-    this.windowRef.nativeWindow.top.location.assign( "35.200.198.3/assets/doc/Appointments.docx");
+    this.windowRef.nativeWindow.top.location.href = "35.200.198.3/assets/doc/Appointments.docx";
   }
 }
