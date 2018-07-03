@@ -125,13 +125,13 @@
               <label>
                 <input type="checkbox" [(ngModel)] = "tandc">
                 <span>I accept the
-                  <a href = "35.200.198.3/assets/doc/Appointments.docx" >terms and conditions of appointment</a>
+                  <a (click) = "downloadTandC()" >terms and conditions of appointment</a>
                 </span>
               </label>
             </div>
           </div>
           <div class="step-actions " style="padding-bottom:10px;">
-            <button [disabled] = "this.tandc" class=" dr-bot-btn waves-effect waves-dark btn next-step col s6" (click)="saveAppointment() ">Confirm Booking</button>
+            <button [disabled] = "!this.tandc" class=" dr-bot-btn waves-effect waves-dark btn next-step col s6" (click)="saveAppointment() ">Confirm Booking</button>
             <button class="waves-effect waves-dark btn center-align col s6 hoverable dr-bot-btn previous-step white-text">Back</button>
           </div>
         </div>

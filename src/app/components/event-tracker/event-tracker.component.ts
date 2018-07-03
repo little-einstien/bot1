@@ -119,6 +119,7 @@ export class EventTrackerComponent implements OnInit {
   moveToPaymentSite(){
     this.windowRef.nativeWindow.top.location.href = 'http://drgeetagera.com';
   }
+
   getTimeLabel(date){
     if(this.selectedSlot && this.selectedSlot.l){
     let hrs_mins = this.selectedSlot.l.split(":");
@@ -128,5 +129,8 @@ export class EventTrackerComponent implements OnInit {
     }else{
       return '';
     }
+  }
+  downloadTandC(){
+    this.windowRef.nativeWindow.top.location.assign( "35.200.198.3/assets/doc/Appointments.docx");
   }
 }
