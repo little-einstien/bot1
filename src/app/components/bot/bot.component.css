@@ -4,7 +4,7 @@
 }
 .chatform:before {
     content: '';
-    background-image: url(http://drgeetagera.com/images/dr%20banner.png);
+    background-image: url(/assets/images/drgeetabanner.png);
 	background-repeat: no-repeat;
     background-size: cover;
     display: block;
