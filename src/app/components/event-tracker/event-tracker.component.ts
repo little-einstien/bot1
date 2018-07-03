@@ -6,6 +6,7 @@ import { DialogflowService } from '../../services/dialogflow.service';
 import { WindowRef } from '../../WindowRef';
 import { DatepickerOptions } from 'ng2-datepicker';
 import * as frLocale from 'date-fns/locale/fr';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-event-tracker',
   templateUrl: './event-tracker.component.html',
@@ -13,6 +14,7 @@ import * as frLocale from 'date-fns/locale/fr';
 })
 export class EventTrackerComponent implements OnInit {
   data:any[] = [];
+  tandcurl = `${environment.api_endpoint}/downloadtandc`;
   tandc;
   @Output() sendMessage: EventEmitter<any> = new EventEmitter();
   public mslots;
