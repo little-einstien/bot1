@@ -47,3 +47,6 @@ ul.stepper .step.active:before, ul.stepper .step.done:before {
   box-shadow: none !important;
   -webkit-box-shadow : none !important;
 }
+.card-content h6{
+  font-size: 12px !important;
+}
