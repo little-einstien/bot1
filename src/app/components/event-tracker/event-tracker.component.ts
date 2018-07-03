@@ -112,6 +112,7 @@ export class EventTrackerComponent implements OnInit {
     this.selectedSlot = slot;
     //alert(slot);
   }
+  tandcframesrc = '';
   validate(){
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/igm;
     var mobilere = /^\d{10}$/;
@@ -132,6 +133,6 @@ export class EventTrackerComponent implements OnInit {
     }
   }
   downloadTandC(){
-    this.windowRef.nativeWindow.top.location.href = "35.200.198.3/assets/doc/Appointments.docx";
+    this.tandcframesrc = "35.200.198.3/assets/doc/Appointments.docx";
   }
 }

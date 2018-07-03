@@ -49,3 +49,6 @@ ul.stepper .step.active:before, ul.stepper .step.done:before {
 .card-content h6{
   font-size: 12px !important;
 }
+#tancframe{
+  display:none;
+}
