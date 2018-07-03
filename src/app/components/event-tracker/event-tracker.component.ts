@@ -13,15 +13,17 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./event-tracker.component.css']
 })
 export class EventTrackerComponent implements OnInit {
-  data:any[] = [];
+  data: any[] = [];
   tandcurl = `${environment.api_endpoint}/downloadtandc`;
   tandc;
   @Output() sendMessage: EventEmitter<any> = new EventEmitter();
   public mslots;
   public eslots;
   public selectedSlot;
-  public event = {st:'',et:'',title:'',remarks:'',pid:'',ap_with: "Arnav",details:[],
-  "user": { "id": "ww", "name": "gdfgd" }};
+  public event = {
+    st: '', et: '', title: '', remarks: '', pid: '', ap_with: "Arnav", details: [],
+    "user": { "id": "ww", "name": "gdfgd" }
+  };
   public name;
   public mobile;
   public email;
@@ -38,7 +40,7 @@ export class EventTrackerComponent implements OnInit {
     barTitleIfEmpty: 'Click to select a date',
     placeholder: 'Click to select a date', // HTML input placeholder attribute (default: '')
     addClass: 'form-control', // Optional, value to pass on to [ngClass] on the input field
-    addStyle: {'width': '100%'}, // Optional, value to pass to [ngStyle] on the input field
+    addStyle: { 'width': '100%' }, // Optional, value to pass to [ngStyle] on the input field
     fieldId: 'my-date-picker', // ID to assign to the input field. Defaults to datepicker-<counter>
     useEmptyBarTitle: false, // Defaults to true. If set to false then barTitleIfEmpty will be disregarded and a date will always be shown 
   };
@@ -46,20 +48,20 @@ export class EventTrackerComponent implements OnInit {
   @ViewChild('stime') stime: ElementRef;
   @ViewChild('edate') edate: ElementRef;
   @ViewChild('etime') etime: ElementRef;
-  @Input('response') response:any ;
-  constructor(private dataHandlerService: DialogflowService,private windowRef : WindowRef) {
+  @Input('response') response: any;
+  constructor(private dataHandlerService: DialogflowService, private windowRef: WindowRef) {
     setTimeout(() => {
       M.Datepicker.init(document.querySelectorAll('.datepicker'), {});
       M.Timepicker.init(document.querySelectorAll('.timepicker'), {});
     }, 1000);
-  } 
+  }
 
   ngOnInit() {
     var elem = document.querySelector('.collapsible.expandable');
     var instance = M.Collapsible.init(elem, {
       accordion: false
     });
-    setTimeout(()=> {this.windowRef.nativeWindow.initStepper();console.log(this)},1000)
+    setTimeout(() => { this.windowRef.nativeWindow.initStepper(); console.log(this) }, 1000)
 
   }
   saveEvent() {
@@ -69,54 +71,54 @@ export class EventTrackerComponent implements OnInit {
     // this.dataHandlerService.currentProject.subscribe(project => pid = project.id);
     this.dataHandlerService.saveAppointment({
       pid: "f7W18EB",
-      date : this.st.getTime(),
-      slot:this.selectedSlot,
-      remarks:this.remarks,
+      date: this.st.getTime(),
+      slot: this.selectedSlot,
+      remarks: this.remarks,
       pmode: this.pmode,
-      "user": { "id": "ww", "name": this.name,"mobile":this.mobile,"email":this.email }
+      "user": { "id": "ww", "name": this.name, "mobile": this.mobile, "email": this.email }
     }).then((res) => {
       this.sendMessage.emit(res);
     });
   }
   getSlots() {
     console.log(this.st)
-    this.dataHandlerService.getSlotsDatewise('arnav', this.st.getTime()).then((slots:any) => {
-      if(slots && slots.length != 0){
+    this.dataHandlerService.getSlotsDatewise('arnav', this.st.getTime()).then((slots: any) => {
+      if (slots && slots.length != 0) {
         this.mslots = slots[0]['m_slt'];
         this.eslots = slots[0]['e_slt'];
-      }else{
+      } else {
         this.mslots = [];
         this.eslots = [];
       }
-      
+
     });
   }
-  onSelectionChange(slot){
+  onSelectionChange(slot) {
     this.selectedSlot = slot;
     //alert(slot);
   }
   tandcframesrc = '';
-  validate(){
+  validate() {
     var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/igm;
     var mobilere = /^\d{10}$/;
-    return ((!this.name || !this.mobile ) || (this.email && !re.test(this.email)) || (!this.pmode) || (this.mobile && !mobilere.test(this.mobile)));
+    return ((!this.name || !this.mobile) || (this.email && !re.test(this.email)) || (!this.pmode) || (this.mobile && !mobilere.test(this.mobile)));
   }
-  moveToPaymentSite(){
+  moveToPaymentSite() {
     this.windowRef.nativeWindow.top.location.href = 'http://drgeetagera.com';
   }
 
-  getTimeLabel(){
+  getTimeLabel() {
     let date = new Date(this.st.getTime());
-    if(this.selectedSlot && this.selectedSlot.l){
-    let hrs_mins = this.selectedSlot.l.split(":");
-    date.setHours(hrs_mins[0]);
-    date.setMinutes(hrs_mins[1]);
-    return date.toDateString();
-    }else{
+    if (this.selectedSlot && this.selectedSlot.l) {
+      let hrs_mins = this.selectedSlot.l.split(":");
+      date.setHours(hrs_mins[0]);
+      date.setMinutes(hrs_mins[1]);
+      return date.toDateString();
+    } else {
       return '';
     }
   }
-  downloadTandC(){
+  downloadTandC() {
     this.tandcframesrc = "35.200.198.3/assets/doc/Appointments.docx";
   }
 }
