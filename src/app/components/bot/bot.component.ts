@@ -226,7 +226,7 @@ export class BotComponent implements OnInit, AfterViewInit {
         <b>Booking id </b> : ${$event.id}
       </p>
       <p>
-        <b>Date</b> : ${new Date($event.date).toUTCString()}
+        <b>Date</b> : ${new Date($event.date).toDateString()}
       </p>
       <p>
         <b>Slot</b> : ${$event.slot.l}
