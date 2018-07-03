@@ -230,6 +230,9 @@ export class BotComponent implements OnInit, AfterViewInit {
       </p>
       <p>
         <b>Slot</b> : ${$event.slot.l}
+      </p>
+      <p>
+        <b>Payment mode</b> : ${$event.pmode}
       </p>`, type: 0
     }, 'assets/images/bot.png', 'bot', new Date());
   }

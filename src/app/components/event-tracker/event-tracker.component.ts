@@ -89,6 +89,7 @@ export class EventTrackerComponent implements OnInit {
       date : this.st.getTime(),
       slot:this.selectedSlot,
       remarks:this.remarks,
+      pmode: this.pmode,
       "user": { "id": "ww", "name": this.name,"mobile":this.mobile,"email":this.email }
     }).then((res) => {
       this.sendMessage.emit(res);
