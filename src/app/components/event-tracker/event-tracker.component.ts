@@ -105,7 +105,8 @@ export class EventTrackerComponent implements OnInit {
     this.windowRef.nativeWindow.top.location.href = 'http://drgeetagera.com';
   }
 
-  getTimeLabel(date){
+  getTimeLabel(){
+    let date = new Date(this.st.getTime());
     if(this.selectedSlot && this.selectedSlot.l){
     let hrs_mins = this.selectedSlot.l.split(":");
     date.setHours(hrs_mins[0]);
