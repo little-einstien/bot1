@@ -63,25 +63,6 @@ export class EventTrackerComponent implements OnInit {
 
   }
   saveEvent() {
-    
-    let startDate = M.Datepicker.getInstance(this.sdate.nativeElement);
-    let startTime = M.Timepicker.getInstance(this.stime.nativeElement);
-    let endDate = M.Datepicker.getInstance(this.edate.nativeElement);
-    let endTime = M.Timepicker.getInstance(this.etime.nativeElement);
-
-    startDate.date.setHours(startTime.hours);
-    startDate.date.setMinutes(startTime.minutes);
-
-    endDate.date.setHours(endTime.hours);
-    endDate.date.setMinutes(endTime.minutes);
-    this.event.st = startDate.date.toISOString();
-    this.event.et = endDate.date.toISOString();;
-
-    let pid = '131d3w2d';
-    // this.dataHandlerService.currentProject.subscribe(project => pid = project.id);
-    this.event.pid = pid;
-    this.dataHandlerService.saveAppointment(this.event);
-    console.log(event);
   }
   saveAppointment() {
     let pid = '';
