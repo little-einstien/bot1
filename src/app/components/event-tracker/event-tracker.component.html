@@ -16,7 +16,7 @@
                     <div class="row">
                       <span class="col s12 black-text">Morning Slots</span>
                       <p class="col s4" *ngFor="let slot of mslots">
-                        <label>
+                        <label *ngIf = "!slot.status || slot.status != 1 ">
                           <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
                           <span>{{slot.l}}</span>
                         </label>
