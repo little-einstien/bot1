@@ -15,8 +15,8 @@
                   <div id="m-slots-viewer" *ngIf="mslots && mslots.length != 0">
                     <div class="row">
                       <span class="col s12 black-text">Morning Slots</span>
-                      <p class="col s4" *ngFor="let slot of mslots">
-                        <label *ngIf = "!slot.status || slot.status != 1 ">
+                      <p  *ngFor="let slot of mslots">
+                        <label class="col s4" *ngIf = "!slot.status || slot.status != 1 ">
                           <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
                           <span>{{slot.l}}</span>
                         </label>
@@ -26,8 +26,8 @@
                   <div id="e-slots-viewer" *ngIf="eslots && eslots.length != 0">
                     <div class="row">
                       <span class="col s12 black-text">Evening Slots</span>
-                      <p class="col s4" *ngFor="let slot of eslots">
-                        <label>
+                      <p  *ngFor="let slot of eslots">
+                        <label class="col s4" *ngIf = "!slot.status || slot.status != 1 ">
                           <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
                           <span>{{slot.l}}</span>
                         </label>
