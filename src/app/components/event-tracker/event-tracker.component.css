@@ -43,3 +43,7 @@ ul.stepper .step.active:before, ul.stepper .step.done:before {
 .card .card-content {
   padding: 10px !important;
 }
+.appointment-card {
+  box-shadow: none !important;
+  -webkit-box-shadow : none !important;
+}
