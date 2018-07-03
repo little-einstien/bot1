@@ -123,7 +123,7 @@ export class EventTrackerComponent implements OnInit {
     let hrs_mins = this.selectedSlot.l.split(":");
     date.setHours(hrs_mins[0]);
     date.setMinutes(hrs_mins[1]);
-    return date.toUTCString();
+    return date.toDateString();
     }else{
       return '';
     }
