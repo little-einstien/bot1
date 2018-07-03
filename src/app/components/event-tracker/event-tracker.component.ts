@@ -13,6 +13,7 @@ import * as frLocale from 'date-fns/locale/fr';
 })
 export class EventTrackerComponent implements OnInit {
   data:any[] = [];
+  tandc;
   @Output() sendMessage: EventEmitter<any> = new EventEmitter();
   public mslots;
   public eslots;

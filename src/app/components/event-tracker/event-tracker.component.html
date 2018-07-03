@@ -84,7 +84,8 @@
           </div>
           <div class="row" *ngIf="pmode == 'online'">
             <div class="col s12 p-t-10 valign-wrapper">
-              <a class="waves-effect waves-light btn center-align col s6 hoverable dr-bot-btn  col s12" (click) = "moveToPaymentSite()"><i class="material-icons left">payment</i>Click here for payment</a>
+              <a class="waves-effect waves-light btn center-align col s6 hoverable dr-bot-btn  col s12" (click)="moveToPaymentSite()">
+                <i class="material-icons left">payment</i>Click here for payment</a>
             </div>
 
           </div>
@@ -119,8 +120,19 @@
               </div>
             </div>
           </div>
+          <div class="row  m-l-0">
+            <div class="col s12">
+              <label>
+                <input type="checkbox" [(ngModel)] = "tandc">
+                <span>I accept the
+                  <a href = "35.200.198.3/assets/doc/Appointments.docx" >terms and conditions of appointment</a>
+                </span>
+              </label>
+            </div>
+          </div>
           <div class="step-actions " style="padding-bottom:10px;">
-            <button class=" dr-bot-btn waves-effect waves-dark btn next-step" (click)="saveAppointment() ">Confirm Booking</button>
+            <button [disabled] = "this.tandc" class=" dr-bot-btn waves-effect waves-dark btn next-step col s6" (click)="saveAppointment() ">Confirm Booking</button>
+            <button class="waves-effect waves-dark btn center-align col s6 hoverable dr-bot-btn previous-step white-text">Back</button>
           </div>
         </div>
       </li>
