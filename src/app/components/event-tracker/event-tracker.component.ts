@@ -108,8 +108,8 @@ export class EventTrackerComponent implements OnInit {
   }
 
   getTimeLabel() {
-    let date = new Date(this.st.getTime());
     if (this.selectedSlot && this.selectedSlot.l) {
+      let date = new Date(this.st.getTime());
       let hrs_mins = this.selectedSlot.l.split(":");
       date.setHours(hrs_mins[0]);
       date.setMinutes(hrs_mins[1]);
