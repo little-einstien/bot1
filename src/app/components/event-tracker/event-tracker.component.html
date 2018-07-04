@@ -27,14 +27,14 @@
                   <div id="e-slots-viewer" *ngIf="eslots && eslots.length != 0">
                     <div class="row">
                       <span class="col s12 black-text">Evening Slots</span>
-                      <div class = "col s12">
+              
                       <p class="col s4" *ngFor="let slot of eslots">
                         <label  *ngIf = "!slot.status || slot.status != 1 ">
                           <input name="group1" type="radio" (change)="onSelectionChange(slot)" />
                           <span>{{slot.l}}</span>
                         </label>
                       </p>
-                      </div>
+              
                     </div>
                   </div>
                   <div class="row">
