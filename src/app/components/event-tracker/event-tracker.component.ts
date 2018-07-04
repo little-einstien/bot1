@@ -82,7 +82,7 @@ export class EventTrackerComponent implements OnInit {
   }
   getSlots() {
     console.log(this.st)
-    this.dataHandlerService.getSlotsDatewise('arnav', this.st.getTime()).then((slots: any) => {
+    this.dataHandlerService.getSlotsDatewise('drgeetagera', this.st.getTime()).then((slots: any) => {
       if (slots && slots.length != 0) {
         this.mslots = slots[0]['m_slt'];
         this.eslots = slots[0]['e_slt'];
