@@ -52,3 +52,14 @@ ul.stepper .step.active:before, ul.stepper .step.done:before {
 #tancframe{
   display:none;
 }
+
+@media(max-width:767px){
+  .ngx-datepicker-container .ngx-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit, .ngx-datepicker-container .ngx-datepicker-calendar-container .main-calendar-container .main-calendar-days .day-unit.is-today {
+      height: 20px !important;
+  }
+
+  .card-content ul.stepper {
+      padding: 0 20px;
+  }
+}
+
