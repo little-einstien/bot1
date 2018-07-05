@@ -1,5 +1,5 @@
 export class Message {
-  content: object;
+  content: any;
   timestamp: Date;
   avatar: string;
   type: string;
