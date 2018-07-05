@@ -235,7 +235,7 @@ export class BotComponent implements OnInit, AfterViewInit {
         <b>Payment mode</b> : ${$event.pmode}
       </p>
       ${$event.pmode == 'online' ?  
-      '<div class="col s12 p-t-10 valign-wrapper"><a class="waves-effect waves-light btn center-align col s6 hoverable dr-bot-btn  col s12" (click)="moveToPaymentSite()"><i class="material-icons left">payment</i>Click here for payment</a></div>' : ''}, type: 0
+      '<div class="col s12 p-t-10 valign-wrapper"><a class="waves-effect waves-light btn center-align col s6 hoverable dr-bot-btn  col s12" (click)="moveToPaymentSite()"><i class="material-icons left">payment</i>Click here for payment</a></div>' : ''}`, type: 0
     }, 'assets/images/bot.png', 'bot', new Date());
   }
 }
