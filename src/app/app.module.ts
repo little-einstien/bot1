@@ -21,11 +21,10 @@ import { WindowRef } from './WindowRef';
 import { NgDatepickerModule } from 'ng2-datepicker';
 import { StpperFormComponent } from './components/stpper-form/stpper-form.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-
+import { EscapeHtmlPipePipe } from './pipes/escape-html-pipe.pipe';
 @NgModule({
   declarations: [
-    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent, EventTrackerComponent, ScheduleViewerComponent, StpperFormComponent, RegistrationComponent
-
+    AppComponent, MessageFormComponent,RegistrationStepperComponent, MessageItemComponent, MessageListComponent, routingComponents, BotComponent, EventTrackerComponent, ScheduleViewerComponent, StpperFormComponent, RegistrationComponent,EscapeHtmlPipePipe
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, PerfectScrollbarModule,NgDatepickerModule
