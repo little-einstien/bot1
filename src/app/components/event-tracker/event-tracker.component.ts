@@ -104,7 +104,7 @@ export class EventTrackerComponent implements OnInit {
     return ((!this.name || !this.mobile) || (this.email && !re.test(this.email)) || (!this.pmode) || (this.mobile && !mobilere.test(this.mobile)));
   }
   moveToPaymentSite() {
-    this.windowRef.nativeWindow.top.location.href = 'http://drgeetagera.com';
+    this.windowRef.nativeWindow.open('http://drgeetagera.com','_blank');
   }
 
   getTimeLabel() {
