@@ -20,7 +20,7 @@ export class BotComponent implements OnInit, AfterViewInit {
   public messages: Message[] = [];
   public botint: boolean;
   public flow;
-
+  public config;
   props = {
     bg_clr: "green",
     h_clr: 'green',
