@@ -104,7 +104,7 @@ export class EventTrackerComponent implements OnInit {
     return ((!this.name || !this.mobile) || (this.email && !re.test(this.email)) || (!this.pmode) || (this.mobile && !mobilere.test(this.mobile)));
   }
   moveToPaymentSite() {
-    this.windowRef.nativeWindow.open('http://drgeetagera.com','_blank');
+    this.windowRef.nativeWindow.open('https://www.quikfee.com/ExpressPayment?EncClientId=MTcx','_blank');
   }
 
   getTimeLabel() {
