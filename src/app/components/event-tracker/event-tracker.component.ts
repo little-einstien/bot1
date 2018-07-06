@@ -36,6 +36,7 @@ export class EventTrackerComponent implements OnInit {
     displayFormat: 'MMM  DD YYYY',
     barTitleFormat: 'MMMM YYYY',
     dayNamesFormat: 'dd',
+    minDate: new Date(Date.now()),
     firstCalendarDay: 0, // 0 - Sunday, 1 - Monday  
     barTitleIfEmpty: 'Click to select a date',
     placeholder: 'Click to select a date', // HTML input placeholder attribute (default: '')
